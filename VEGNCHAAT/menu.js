@@ -1,44 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const categoryLinks = document.querySelectorAll('.category-link, .bottom-nav-link');
-    const sections = document.querySelectorAll('.menu-section, .featured-section');
-    const navWrapper = document.querySelector('.category-nav-wrapper');
-    const menuFab = document.getElementById('menuFab');
-    const bottomNavMenu = document.getElementById('bottomNavMenu');
-
-    // Toggle Floating Menu
-    if (menuFab) {
-        menuFab.addEventListener('click', (e) => {
-            e.stopPropagation();
-            bottomNavMenu.classList.toggle('active');
-        });
-    }
-
-    // Close floating menu when clicking outside
-    document.addEventListener('click', () => {
-        if (bottomNavMenu) bottomNavMenu.classList.remove('active');
-    });
-
-    // Prevent closing when clicking inside the menu
-    if (bottomNavMenu) {
-        bottomNavMenu.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-    }
+    const navLinks = document.querySelectorAll('.category-nav-link');
+    const sections = document.querySelectorAll('.menu-section');
+    const categoryNavWrapper = document.querySelector('.category-nav-wrapper');
+    const footerWrapperEl = document.querySelector('.footer-wrapper');
+    const appetizersSection = document.querySelector('#appetizers');
+    const headerHeight = 65;
 
     // Smooth scroll to sections
-    categoryLinks.forEach(link => {
+    navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const targetId = link.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-            
-            if (bottomNavMenu) bottomNavMenu.classList.remove('active');
 
             if (targetSection) {
-                const headerHeight = 65; 
-                const navHeight = navWrapper ? navWrapper.offsetHeight : 0;
-                const targetPosition = targetSection.offsetTop - headerHeight - navHeight;
-                
+                const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -47,33 +23,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Active state on scroll
+    // Active state + show/hide nav based on scroll position
     window.addEventListener('scroll', () => {
+        updateActiveLink();
+        updateCategoryNavVisibility();
+    });
+
+    function updateActiveLink() {
         let current = '';
-        const headerHeight = 65;
-        const navHeight = navWrapper ? navWrapper.offsetHeight : 0;
 
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - headerHeight - navHeight - 150;
+            const sectionTop = section.offsetTop - headerHeight - 100;
             if (window.scrollY >= sectionTop) {
                 current = section.getAttribute('id');
             }
         });
 
-        categoryLinks.forEach(link => {
+        navLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === `#${current}`) {
                 link.classList.add('active');
-                
-                // If it's a top nav link, scroll it into view
-                if (link.classList.contains('category-link')) {
-                    link.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'nearest',
-                        inline: 'center'
-                    });
-                }
             }
         });
-    });
+    }
+
+    function updateCategoryNavVisibility() {
+        if (!categoryNavWrapper) return;
+
+        const scrollBottom = window.scrollY + window.innerHeight;
+        const footerHeight = footerWrapperEl ? footerWrapperEl.offsetHeight : 0;
+        const bodyHeight = document.body.scrollHeight;
+
+        // Show nav only when appetizers section is reached
+        const appetizersStart = appetizersSection
+            ? appetizersSection.offsetTop - headerHeight - 20
+            : 0;
+
+        // Hide when footer starts to become visible
+        const footerRevealPoint = bodyHeight - footerHeight + 60;
+
+        if (window.scrollY >= appetizersStart && scrollBottom < footerRevealPoint) {
+            categoryNavWrapper.classList.remove('nav-hidden');
+        } else {
+            categoryNavWrapper.classList.add('nav-hidden');
+        }
+    }
+
+    // Run on load
+    updateCategoryNavVisibility();
 });
