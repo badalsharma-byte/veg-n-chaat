@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Veg n Chaat</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="menu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-link">
+                <img src="../Assets/logo.png" alt="Veg n Chaat Logo" class="site-logo">
+                <div class="logo-text">
+                    <span class="logo-text-bold">Vegn</span>
+                    <span class="logo-text-light">Chaat</span>
+                </div>
+            </a>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="menu.html" class="nav-link active">Menu</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Locations</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="category-nav-wrapper">
+        <nav class="category-nav">
+            <a href="#featured" class="category-link">Featured</a>
+            <a href="#appetizers" class="category-link">Appetizers</a>
+            <a href="#chaat" class="category-link">Chaat</a>
+            <a href="#monthly-specials" class="category-link">Monthly Specials</a>
+            <a href="#vegetable-entrees" class="category-link">Entrees</a>
+            <a href="#beverages" class="category-link">Beverages</a>
+            <a href="#desserts" class="category-link">Desserts</a>
+        </nav>
+    </div>
+
+    <main class="menu-container">
+        
+        <section class="menu-hero">
+            <div class="hero-video-container">
+                <video autoplay muted loop playsinline class="hero-video">
+                    <source src="../Assets/video/Restaurant_Interior.mp4" type="video/mp4">
+                </video>
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">Experience the Taste of<br>Authentic Indian Street Food</h1>
+            </div>
+        </section>
+
+        <header class="menu-header">
+            <p>Simple. Fresh. Honest Indian Street Food.</p>
+        </header>
+
+        <section id="featured" class="featured-section">
+            <div class="featured-container">
+                <div class="featured-image">
+                    <img src="../Assets/dahi bhala.jpg" alt="Dahi Bhalla Featured">
+                </div>
+                <div class="featured-content">
+                    <h3>Dahi Bhalla Special</h3>
+                    <p>Our classic soft fried lentil dumplings topped with chilled yogurt, potatoes, crispy wafers and our secret house chutneys. A must-try classic.</p>
+                    <span class="item-price">$8.99</span>
+                    <div class="item-tags" style="margin-top: 15px;">
+                        <span class="tag tag-jain">Jain Option</span>
+                        <span class="tag tag-nutfree">Nut Free</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Appetizers -->
+        <section id="appetizers" class="menu-section">
+            <div class="section-title">
+                <h2>Appetizers & Street Snacks</h2>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-title">Potato Peas Samosa</span>
+                        <span class="item-price">$4.99</span>
+                    </div>
+                    <p class="item-description">Crispy fried dumplings filled with spiced potatoes and green peas, served with chutney.</p>
+                    <div class="item-tags">
+                        <span class="tag tag-vegan">Vegan</span>
+                        <span class="tag tag-jain">Jain</span>
+                        <span class="tag tag-nutfree">Nut Free</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-title">Bombay Vada Pav</span>
+                        <span class="item-price">$4.99</span>
+                    </div>
+                    <p class="item-description">Mumbai-style street sandwich with a spiced potato fritter in soft pav bread and chutneys.</p>
+                    <div class="item-tags">
+                        <span class="tag tag-vegan">Vegan</span>
+                        <span class="tag tag-jain">Jain</span>
+                        <span class="tag tag-nutfree">Nut Free</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-title">Veg Cheese Burger</span>
+                        <span class="item-price">$8.99</span>
+                    </div>
+                    <p class="item-description">Vegetarian burger with melted cheese served with crispy fries and choice of soda.</p>
+                    <div class="item-tags">
+                        <span class="tag tag-jain">Jain</span>
+                        <span class="tag tag-nutfree">Nut Free</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-title">Dabeli</span>
+                        <span class="item-price">$7.99</span>
+                    </div>
+                    <p class="item-description">Spiced potato mixture stuffed in pav topped with onion, pomegranate, cilantro, peanuts and sev.</p>
+                    <div class="item-tags">
+                        <span class="tag tag-vegan">Vegan</span>
+                        <span class="tag tag-jain">Jain</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chaat Specialties -->
+        <section id="chaat" class="menu-section">
+            <div class="section-title">
+                <h2>Chaat Specialties</h2>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-title">Dahi Papdi Chaat</span>
+                        <span class="item-price">$7.99</span>
+                    </div>
+                    <p class="item-description">Crispy wafers layered with potatoes, chickpeas, yogurt, chutneys, sev and spices.</p>
+                    <div class="item-tags">
+                        <span class="tag tag-vegan">Vegan Opt</span>
+                        <span class="tag tag-jain">Jain</span>
+                        <span class="tag tag-nutfree">Nut Free</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-title">Pani Poori</span>
+                        <span class="item-price">$7.99</span>
+                    </div>
+                    <p class="item-description">Crispy hollow wafers served with spicy mint water, potatoes, sprouts and chutneys.</p>
+                    <div class="item-tags">
+                        <span class="tag tag-vegan">Vegan</span>
+                        <span class="tag tag-jain">Jain</span>
+                        <span class="tag tag-nutfree">Nut Free</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-title">Bhel Poori</span>
+                        <span class="item-price">$7.99</span>
+                    </div>
+                    <p class="item-description">Puffed rice mixed with crispy wafers, potatoes, onions, sprouts, chickpeas, sev and chutneys.</p>
+                    <div class="item-tags">
+                        <span class="tag tag-vegan">Vegan</span>
+                        <span class="tag tag-jain">Jain</span>
+                        <span class="tag tag-nutfree">Nut Free</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-title">Chaat Basket</span>
+                        <span class="item-price">$9.99</span>
+                    </div>
+                    <p class="item-description">Basket shaped crispy wafer filled with potatoes, yogurt, chickpeas, onions and chutneys.</p>
+                    <div class="item-tags">
+                        <span class="tag tag-vegan">Vegan Opt</span>
+                        <span class="tag tag-jain">Jain</span>
+                        <span class="tag tag-nutfree">Nut Free</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Monthly Specials -->
+        <section id="monthly-specials" class="menu-section">
+            <div class="section-title">
+                <h2>Monthly Specials</h2>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-title">Special Thali</span>
+                        <span class="item-price">$17.99</span>
+                    </div>
+                    <p class="item-description">Appetizer, two vegetables, dal, peas pulao, raita, papad, dessert and choice of roti/paratha or poori.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-title">Paneer Beetroot Kofta Curry</span>
+                        <span class="item-price">$17.99</span>
+                    </div>
+                    <p class="item-description">Paneer and beetroot dumplings served in rich curry with garlic naan.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vegetable Entrees -->
+        <section id="vegetable-entrees" class="menu-section">
+            <div class="section-title">
+                <h2>Vegetable Entrees</h2>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-title">Paneer Tikka Masala</span>
+                        <span class="item-price">$14.99</span>
+                    </div>
+                    <p class="item-description">Grilled paneer cooked in creamy tomato masala sauce.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-title">Dal Makhni</span>
+                        <span class="item-price">$14.99</span>
+                    </div>
+                    <p class="item-description">Slow cooked black lentils with butter, tomatoes and spices.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-title">Malai Kofta</span>
+                        <span class="item-price">$14.99</span>
+                    </div>
+                    <p class="item-description">Vegetable dumplings cooked in rich creamy gravy.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-title">Chana Masala</span>
+                        <span class="item-price">$12.99</span>
+                    </div>
+                    <p class="item-description">White chickpeas cooked with tomatoes, onions and spices.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beverages -->
+        <section id="beverages" class="menu-section">
+            <div class="section-title">
+                <h2>Beverages</h2>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-title">Masala Chai</span>
+                        <span class="item-price">$2.99</span>
+                    </div>
+                    <p class="item-description">Traditional Indian tea brewed with milk, cardamom and spices.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-title">Mango Lassi</span>
+                        <span class="item-price">$4.99</span>
+                    </div>
+                    <p class="item-description">Refreshing yogurt drink blended with mango.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Desserts -->
+        <section id="desserts" class="menu-section">
+            <div class="section-title">
+                <h2>Desserts</h2>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-title">Ras Malai</span>
+                        <span class="item-price">$7.99</span>
+                    </div>
+                    <p class="item-description">Soft cheese dumplings soaked in sweet creamy milk.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-title">Gajar Halwa</span>
+                        <span class="item-price">$8.99</span>
+                    </div>
+                    <p class="item-description">Traditional carrot dessert cooked with milk and nuts.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="floating-nav-container">
+        <button class="menu-fab" id="menuFab">
+            <span class="fab-icon">☰</span>
+            <span class="fab-text">Menu Categories</span>
+        </button>
+        <div class="bottom-nav-menu" id="bottomNavMenu">
+            <a href="#featured" class="bottom-nav-link">Featured</a>
+            <a href="#appetizers" class="bottom-nav-link">Appetizers</a>
+            <a href="#chaat" class="bottom-nav-link">Chaat</a>
+            <a href="#monthly-specials" class="bottom-nav-link">Monthly Specials</a>
+            <a href="#vegetable-entrees" class="bottom-nav-link">Entrees</a>
+            <a href="#beverages" class="bottom-nav-link">Beverages</a>
+            <a href="#desserts" class="bottom-nav-link">Desserts</a>
+        </div>
+    </div>
+
+    <footer class="menu-footer">
+        <div class="footer-top">
+            <div class="footer-logo-section">
+                <img src="../Assets/logo.png" alt="Veg n Chaat Logo" class="footer-logo">
+            </div>
+            <div class="footer-actions">
+                <a href="#" class="footer-btn">Online Order</a>
+                <a href="#" class="footer-btn">Catering Services</a>
+                <a href="#" class="footer-btn">Reserve a Table</a>
+            </div>
+        </div>
+        <div class="footer-bottom-bar">
+            <div class="footer-copy">© Veg N Chaat 2026. All rights reserved.</div>
+            <div class="footer-social">
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="FB" width="18"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="IG" width="18"></a>
+            </div>
+            <div class="footer-links">
+                <a href="#">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="menu.js"></script>
+</body>
+
+</html>

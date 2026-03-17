@@ -1,0 +1,3341 @@
+@font-face {
+    font-family: "Magnetik";
+    src: url('assets/fonts/Magnetik-Bold.woff2') format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Magnetik";
+    src: url('assets/fonts/Magnetik-Regular.woff2') format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Magnetik";
+    src: url('assets/fonts/Magnetik-Light.woff2') format("woff2");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --bg-color: #fffdf5;
+    --text-color: #1d1d1b;
+    --hover-color: #333333;
+    --border-color: #e5e5e5;
+    --font-primary: 'Montserrat', sans-serif;
+    --font-heading: 'Cormorant Garamond', serif;
+    --header-height: 65px;
+    /* Decreased by ~20% */
+
+    /* Category Colors from Reference */
+    --food-service-bg: url('../Assets/dishes.jpg') center/cover;
+    --food-processing-bg: url('../Assets/dahi\ bhala.jpg') center/cover;
+    --agriculture-bg: url('../Assets/pani\ puri.jpg') center/cover;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+}
+
+/* --- Lenis Smooth Scroll Recommended CSS --- */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
+}
+
+/* --- Header Base --- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: transparent;
+    /* Changed from variable to transparent */
+    z-index: 1000;
+    transition: background-color 0.3s ease, border-bottom 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+/* Visual cue when scrolling or hovering */
+.site-header.scrolled,
+.site-header:hover {
+    background-color: var(--bg-color);
+    /* Become solid */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 8vw;
+    /* Responsive padding */
+    max-width: 100%;
+    /* Let it span full width with padding */
+    margin: 0 auto;
+}
+
+/* --- Logo --- */
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    z-index: 10;
+    margin-right: 60px;
+    /* Padding beside the logo before links start */
+    gap: 12px;
+}
+
+.site-logo {
+    height: 40px;
+    /* Big explicit logo */
+    width: auto;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.1;
+    font-size: 18px;
+    /* Bigger text */
+    color: var(--text-color);
+}
+
+.logo-text-bold {
+    font-weight: 600;
+}
+
+.logo-text-light {
+    font-weight: 300;
+}
+
+/* --- Responsive Header & Nav --- */
+@media screen and (max-width: 1024px) {
+    .header-container {
+        padding: 0 20px;
+    }
+
+    .nav-list {
+        display: none;
+        /* Hide desktop nav for now */
+    }
+
+    .header-utils {
+        margin-left: auto;
+        /* Push utilities to right */
+    }
+
+    /* Optional: Hide some utility buttons on very small screens if needed */
+    .cta-btn {
+        display: none;
+    }
+
+    /* Keep the cart button visible */
+    .cart-btn {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .logo-text {
+        font-size: 16px;
+    }
+
+    .site-logo {
+        height: 32px;
+    }
+}
+
+.main-nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    height: 100%;
+    gap: 32px;
+    /* Spacing between nav items */
+}
+
+.nav-item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    /* Ensure basic dropdowns position correctly relative to this parent */
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 15px;
+    font-weight: 400;
+    padding: 8px 0;
+    display: inline-block;
+    position: relative;
+    /* Anchor for pseudo-element */
+}
+
+/* Hover active indicator underline */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    /* Just below text */
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Expand the line on hover or when its dropdown is open */
+.nav-link:hover::after,
+.nav-item.active .nav-link::after {
+    width: 100%;
+}
+
+/* Rolling Text Animation Classes */
+.roll-text {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 1.2em;
+    /* Ensure only one line is visible at a time */
+    line-height: 1.2em;
+}
+
+.text-upper,
+.text-lower {
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.text-upper {
+    transform: translateY(0%);
+}
+
+.text-lower {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transform: translateY(0%);
+}
+
+.nav-link:hover .text-lower,
+.nav-item.active>.nav-link .text-lower,
+.yucca-hover:hover .text-lower,
+.btn-slide-hover:hover .text-lower {
+    transform: translateY(-100%);
+}
+
+.nav-link:hover .text-upper,
+.nav-item.active>.nav-link .text-upper,
+.yucca-hover:hover .text-upper,
+.btn-slide-hover:hover .text-upper {
+    transform: translateY(-100%);
+}
+
+/* Yucca Inner Link Hover Effect */
+.yucca-hover {
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.yucca-hover .roll-text {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.yucca-hover .link-arrow {
+    opacity: 0;
+    transform: translateX(-15px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    margin-left: 8px;
+    width: 14px;
+    height: 14px;
+}
+
+.yucca-hover:hover .roll-text {
+    transform: translateX(10px);
+}
+
+.yucca-hover:hover .link-arrow {
+    opacity: 1;
+    transform: translateX(10px);
+}
+
+.yucca-hover .badge {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    margin-left: auto;
+}
+
+.yucca-hover:hover .badge {
+    transform: translateX(10px);
+}
+
+/* --- Utilities (Right Side) --- */
+.header-utils {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    z-index: 10;
+    margin-left: auto;
+    /* Pushes the right-side utilities all the way to the right */
+}
+
+/* CTA Buttons */
+.cta-btn {
+    padding: 10px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-primary {
+    background-color: #d4af37;
+    /* Gold primary */
+    color: #fff;
+    border: 1px solid #d4af37;
+}
+
+.cta-primary:hover {
+    background-color: #bfa035;
+    border-color: #bfa035;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cta-secondary {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.cta-secondary:hover {
+    background-color: #f5f5f5;
+    border-color: #ccc;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.icon-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Button slide up background and roll hover */
+.btn-slide-hover {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    /* Keep text/content on top of absolute background */
+}
+
+.btn-slide-hover::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1d1d1b;
+    /* Dark charcoal/green from Yucca */
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 0;
+    /* Changed from -1 to ensure it rises above cta-primary background */
+}
+
+.btn-slide-hover:hover {
+    border-color: #1d1d1b;
+    background-color: transparent;
+    /* Prevent default hover from obscuring */
+}
+
+.btn-slide-hover:hover::before {
+    transform: translateY(0%);
+}
+
+.btn-slide-hover .roll-text,
+.btn-slide-hover .roll-icon {
+    position: relative;
+    z-index: 10;
+}
+
+.btn-slide-hover:hover .roll-text {
+    color: #ffffff;
+}
+
+.btn-slide-hover:hover svg {
+    color: #ffffff;
+}
+
+/* Roll-Icon logic specifically for Cart */
+.roll-icon {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 20px;
+    /* matched to SVG height */
+}
+
+.icon-upper,
+.icon-lower {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.icon-upper {
+    transform: translateY(0%);
+}
+
+.icon-lower {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    transform: translateY(0%);
+}
+
+.btn-slide-hover:hover .icon-upper,
+.btn-slide-hover:hover .icon-lower {
+    transform: translateY(-100%);
+}
+
+.account-wrapper {
+    position: relative;
+    /* Reset styles from nav-item to make utility style work */
+    height: auto;
+}
+
+
+/* --- Megamenu Base --- */
+.megamenu {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-color);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    z-index: 999;
+
+    /* Initially hidden for GSAP control */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Removing pure CSS hover class since GSAP handles it */
+
+.megamenu-container {
+    padding: 40px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* --- Shop Megamenu Layout --- */
+/* We let GSAP handle initial opacity/transform for these elements when the menu opens */
+.category-link,
+.shop-custom-card,
+.promo-card,
+.pack-card,
+.dropdown-list a {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.shop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 60px;
+}
+
+.shop-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.category-link {
+    text-decoration: none;
+    color: #444;
+    font-size: 16px;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.category-link:hover {
+    color: var(--text-color);
+}
+
+.shop-all {
+    font-size: 24px;
+    margin-top: 10px;
+    color: var(--text-color);
+}
+
+.shop-all-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 10px 0;
+}
+
+.badge {
+    background-color: #c06c45;
+    color: white;
+    font-size: 10px;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-weight: 400;
+}
+
+/* Shop Custom Card & Promo Column */
+.shop-custom-card {
+    background: url('../Assets/paho\ bhaji.jpg') center/cover no-repeat;
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+.shop-custom-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.8) 100%);
+    z-index: 1;
+    transition: transform 0.4s ease;
+}
+
+.shop-custom-card:hover::before {
+    transform: scale(1.05);
+    /* Slight zoom on hover */
+}
+
+.shop-custom-card>* {
+    position: relative;
+    z-index: 2;
+}
+
+.shop-custom-card h3 {
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 8px;
+}
+
+.shop-custom-card p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: auto;
+}
+
+.shop-promos-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.promo-card {
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.loyalty-card {
+    background-color: #1b2621;
+    color: white;
+}
+
+.return-card {
+    background-color: #b75e39;
+    color: white;
+}
+
+.promo-card h3 {
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 12px;
+}
+
+.promo-card p {
+    font-size: 13px;
+    opacity: 0.9;
+    line-height: 1.4;
+    margin-bottom: auto;
+}
+
+.card-divider {
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+.card-divider.dark {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-divider.light {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.card-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 15px;
+}
+
+.card-link.light {
+    color: white;
+}
+
+/* --- Packaging Solutions Megamenu Layout --- */
+.packaging-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.pack-card {
+    border-radius: 12px;
+    padding: 24px;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    cursor: pointer;
+}
+
+.pack-card.custom-bg {
+    background-color: #f7f6ef;
+    color: var(--text-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.pack-card.custom-bg p {
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.pack-card h3 {
+    font-size: 22px;
+    font-weight: 300;
+    z-index: 2;
+}
+
+.card-bottom {
+    z-index: 2;
+}
+
+/* Card Backgrounds */
+.pack-card.has-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.7) 100%);
+    z-index: 1;
+    transition: transform 0.4s ease;
+}
+
+.pack-card:hover.has-bg::before {
+    transform: scale(1.05);
+    /* Slight zoom on hover */
+}
+
+.food-service-bg {
+    background: var(--food-service-bg);
+}
+
+.food-processing-bg {
+    background: var(--food-processing-bg);
+}
+
+.agriculture-bg {
+    background: var(--agriculture-bg);
+}
+
+
+/* --- Simple Dropdowns (Resources, Account) --- */
+.simple-dropdown {
+    position: absolute;
+    /* Changes from fixed megamenu down to absolute */
+    top: calc(100% - 10px);
+    /* Just below header */
+    width: 250px;
+    left: auto;
+    right: auto;
+    border-radius: 8px;
+    padding: 10px 0;
+    border: 1px solid var(--border-color);
+    /* Need border since it's not spanning full width */
+}
+
+/* Specific overrides for positioning simple menus */
+#resources-menu {
+    left: 50%;
+    transform: translateX(-50%);
+    /* Perfectly center below parent string */
+    width: 200px;
+}
+
+.account-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: auto;
+    width: 200px;
+    margin-top: 20px;
+    padding: 8px 0;
+}
+
+.dropdown-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-list a {
+    display: block;
+    padding: 12px 24px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-list a.yucca-hover {
+    display: flex;
+    /* Override display block so it acts as flex container for roll text & arrow */
+}
+
+.dropdown-list a:hover {
+    background-color: var(--border-color);
+}
+
+/* --- Main/Hero Structure Layout --- */
+.dummy-main {
+    /* No padding top here anymore since we want the hero to sit underneath the transparent header */
+    position: relative;
+    z-index: 2;
+    /* Increased z-index to stay above the footer */
+    background-color: var(--bg-color);
+    /* Ensure opaque */
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+    /* Card-like shadow on bottom */
+    /* Removed beige block so hero image shows through */
+}
+
+.section-hero {
+    box-sizing: border-box;
+    /* CRITICAL: prevents padding from inflating height */
+    position: relative;
+    min-height: calc(100vh - var(--header-height));
+    /* Exact bounds but allows expansion */
+    width: 100%;
+    overflow: hidden;
+    /* Clips background, but won't clip content since we use min-height */
+    padding-top: 100px;
+    padding-bottom: 30px;
+}
+
+/* Full Width Background Image Overlay */
+.s-background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 0;
+}
+
+.s-background .media.image,
+.s-background .media.video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+}
+
+/* Inner content container sitting above the background */
+.s-inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    padding-bottom: 5vw;
+    /* Lifting the cards off the bottom edge */
+    margin: 0;
+}
+
+/* Top Headline - Flex Centering between header and cards */
+.s-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center the text vertically within the remaining space */
+    margin: 0 6vw;
+    padding-bottom: 80px;
+    /* added space below main content */
+    max-width: 600px;
+    z-index: 2;
+}
+
+.s-title {
+    font-size: clamp(35px, 5.0vw, 60px);
+    /* Native is ~65px */
+    font-weight: 100;
+    line-height: 1.25;
+    /* Native is ~75px line-height */
+    letter-spacing: -0.02em;
+    color: var(--text-color);
+    font-family: var(--font-heading);
+    margin: 0;
+}
+
+.s-title .line {
+    overflow: hidden;
+}
+
+/* Bottom Solution Cards Row */
+.s-solutions {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    max-width: 750px;
+    margin: 0 6vw;
+    /* Applies horizontal spacing safely */
+}
+
+/* The card shape is fixed */
+.s-solution {
+    flex: 1;
+    position: relative;
+    padding: 24px;
+    border-radius: 16px;
+    background: hsla(0, 0%, 100%, 0.25);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    color: #1b2621;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 260px;
+    /* Adjusting standard height to match aesthetic properly */
+    transition: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-property: background, backdrop-filter;
+    contain: layout paint;
+}
+
+.s-solution:hover {
+    background: #FFFEFC;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.s-solution-title {
+    width: 100%;
+    text-align: center;
+    color: var(--text-color);
+    overflow: hidden;
+    font-size: 24px;
+    font-weight: 400;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.s-solution-title-text {
+    display: block;
+    transition: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-property: color, opacity, transform;
+}
+
+.s-solution:hover .s-solution-title-text {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+.s-solution-text {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #333;
+    position: absolute;
+    top: 24px;
+    /* Align to top with padding */
+    left: 24px;
+    right: 24px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0s;
+    transition-property: opacity, transform;
+    visibility: hidden;
+    /* Prevent interaction while resting */
+}
+
+.s-solution:hover .s-solution-text {
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: 1s;
+    visibility: visible;
+}
+
+.s-solution-link {
+    width: calc(100% - 48px);
+    /* Account for 24px padding on sides */
+    position: absolute;
+    bottom: 0px;
+    left: 24px;
+    height: 60px;
+    /* Use the 60px area below the border */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    color: #1b2621;
+    text-decoration: none;
+    visibility: hidden;
+}
+
+.s-solution:hover .s-solution-link {
+    visibility: visible;
+}
+
+.s-solution .border {
+    position: absolute;
+    bottom: 60px;
+    /* Right above the link area */
+    /* left: 1px; */
+    width: 80%;
+    /* Partial width line */
+    height: 1px;
+    background-color: #1b2621;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.1s cubic-bezier(0.22, 1, 0.36, 1) 0s;
+}
+
+.s-solution:hover .border {
+    transform: scaleX(1);
+    transition-duration: 0.8s;
+    transition-delay: 0.1s;
+}
+
+.s-solution-link-text {
+    display: block;
+    color: #000;
+    transform: translateY(101%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0s;
+}
+
+.s-solution:hover .s-solution-link-text {
+    transform: translateY(0);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.14s;
+}
+
+.s-solution-link-text-inner {
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.s-solution-link:hover .s-solution-link-text-inner {
+    transform: translateX(8px);
+}
+
+.s-solution-link .arrow-wrapper {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+}
+
+.s-solution-link .arrow-wrapper .arrows {
+    display: flex;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0s;
+}
+
+.s-solution:hover .arrow-wrapper .arrows {
+    transform: translateX(0);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.16s;
+}
+
+.s-solution-link .arrow {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.s-solution-link:hover .arrow:nth-child(1) {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.s-solution-link:hover .arrow:nth-child(2) {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.s-solution-link .arrow:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.spacer {
+    height: 1000px;
+    background-color: #fffdf5;
+    /* Return to normal body bg after hero */
+}
+
+/* Custom Card Link Hover */
+.card-link-anim {
+    display: inline-flex;
+    align-items: center;
+}
+
+.card-link-anim .hover-text {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-link-anim .link-arrow {
+    opacity: 0;
+    transform: translateX(-15px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    margin-left: 8px;
+    width: 14px;
+    height: 14px;
+}
+
+.hover-trigger-card:hover .card-link-anim .hover-text {
+    transform: translateX(10px);
+}
+
+.hover-trigger-card:hover .card-link-anim .link-arrow {
+    opacity: 1;
+    transform: translateX(10px);
+}
+
+/* =========================================================================
+   NEW ONYX-STYLE SECTION
+   ========================================================================= */
+
+.section-unique {
+    background-color: var(--bg-color);
+    /* Match site background */
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+.unique-container {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    /* 60/40 proportional split */
+    max-width: 1400px;
+    /* Slightly wider to match Onyx feel */
+    margin: 0 auto;
+    padding: 100px 46px;
+    /* 46px side padding based on analysis */
+    gap: 60px;
+}
+
+/* Left Column: Sticky Image */
+.unique-media-col {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 100px;
+    /* Stick below the header */
+    height: calc(100vh - 120px);
+    /* Fill screen minus some top/bottom buffer */
+    align-self: start;
+    /* Required for sticky in grid */
+}
+
+.unique-poster-video {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.unique-poster-video img,
+.unique-poster-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Right Column: Scrolling Content */
+.unique-content-col {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0;
+    /* Some padding to offset from grid top */
+}
+
+.unique-top-image,
+.unique-bottom-image {
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* aspect ratio 16:9 effect */
+.unique-top-image img,
+.unique-bottom-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+.unique-top-image {
+    margin-bottom: 60px;
+}
+
+.unique-bottom-image {
+    margin-top: 60px;
+}
+
+.unique-text-wrap {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+    /* Give text breathing room inside the column */
+}
+
+.unique-heading {
+    font-size: clamp(35px, 4vw, 55px);
+    font-weight: 300;
+    /* Thin, elegant weight */
+    color: #1a2a3a;
+    /* Dark navy hint like Onyx */
+    letter-spacing: 1.6px;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    font-family: var(--font-primary);
+    /* Inheriting Magnetik for now, but keeping the weight light */
+}
+
+.unique-desc {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 40px;
+    max-width: 450px;
+    /* Prevent text lines from getting too long */
+}
+
+.unique-btn-wrapper {
+    margin-bottom: 20px;
+}
+
+.unique-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 31px;
+    border: 1px solid #1a2a3a;
+    /* Match the heading color */
+    background: transparent;
+    color: #1a2a3a;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    /* A bit more weight for the button text */
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.unique-btn:hover {
+    background: #1a2a3a;
+    color: white;
+}
+
+/* Hover effect on arrow inside the button */
+.unique-btn svg {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.unique-btn:hover svg {
+    transform: translateX(5px);
+}
+
+/* --- Welcome Section (Missing Section) --- */
+.section-welcome {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.welcome-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 4vw;
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.welcome-heading {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 300;
+    margin-bottom: 60px;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.welcome-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    text-align: left;
+}
+
+.welcome-desc {
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 1.6;
+    color: #4a4a4a;
+}
+
+.welcome-media-col {
+    width: 100%;
+}
+
+.welcome-poster {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/4;
+    margin: 0;
+    overflow: hidden;
+}
+
+.welcome-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.welcome-btn-wrapper {
+    margin-top: 20px;
+}
+
+.welcome-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.welcome-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.welcome-btn:hover svg {
+    transform: translateX(5px);
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 900px) {
+
+    .unique-container,
+    .welcome-container {
+        grid-template-columns: 1fr;
+        /* Stack columns */
+        gap: 40px;
+        padding: 50px 20px;
+    }
+
+    .unique-media-col {
+        position: relative;
+        /* Remove sticky on mobile */
+        top: auto;
+        height: 60vh;
+        /* Set a fixed height for mobile instead of filling screen */
+    }
+
+    .unique-text-wrap {
+        padding: 0;
+    }
+
+    .welcome-content {
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* =========================================================================
+   NEW ONYX-STYLE SECTION 3: LA CARTE (MENU)
+   ========================================================================= */
+
+.section-menu {
+    background-color: #f5f5f5;
+    /* Light grey/off-white background */
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+.menu-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* 50/50 split */
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 46px;
+    gap: 80px;
+}
+
+/* Left Column: Menu Items */
+.menu-list-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-heading {
+    font-size: clamp(35px, 4vw, 55px);
+    font-weight: 300;
+    color: #1a2a3a;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.menu-intro {
+    font-size: 16px;
+    font-weight: 300;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.menu-tabs {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+
+.menu-tab {
+    background: transparent;
+    border: 1px solid #1a2a3a;
+    color: #1a2a3a;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.menu-tab.active,
+.menu-tab:hover {
+    background: #1a2a3a;
+    color: white;
+}
+
+.menu-category-title {
+    font-size: 40px;
+    font-weight: 300;
+    color: #1a2a3a;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+.menu-item {
+    margin-bottom: 35px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    /* Subtle separator */
+    padding-bottom: 25px;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+}
+
+.menu-item-name {
+    font-size: 24px;
+    font-weight: 400;
+    color: #000;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.menu-item-price {
+    font-size: 18px;
+    color: #b57c3a;
+    /* Onyx gold/bronze accent */
+    font-weight: 400;
+}
+
+.menu-item-desc {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    font-weight: 300;
+    margin: 0;
+    max-width: 90%;
+}
+
+/* Right Column: Sticky Image */
+.menu-media-col {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 100px;
+    /* Stick below the header */
+    height: calc(100vh - 150px);
+    align-self: start;
+}
+
+.menu-poster {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.menu-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Tab Content Visibility */
+.menu-content {
+    display: none;
+}
+
+.menu-content.active {
+    display: block;
+}
+
+/* =========================================================================
+   NEW YUCCA-STYLE SOLUTIONS SECTION (BETWEEN SECTION 3 & 4)
+   ========================================================================= */
+
+.section-yucca-solutions {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 10;
+    padding: 150px 0;
+}
+
+.ys-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.ys-bg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s;
+    overflow: hidden;
+    /* Ensure zoomed image doesn't overflow container */
+}
+
+/* Base state for images/video inside the layer (subtle zoom out state) */
+.ys-bg-layer img,
+.ys-bg-layer video {
+    transform: scale(1.05);
+    /* Start slightly zoomed in */
+    transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Smooth long zoom transition */
+    transform-origin: center center;
+}
+
+.ys-bg-layer.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Active state for images/videos (zoom back to normal size) */
+.ys-bg-layer.active img,
+.ys-bg-layer.active video {
+    transform: scale(1);
+}
+
+.ys-background img,
+.ys-bg-layer .media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.ys-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    gap: 30px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    /* Center cards vertically in container */
+}
+
+.ys-card {
+    flex: 0 0 300px;
+    /* Inactive card is a small square */
+    height: 300px;
+    max-width: 300px;
+    border-radius: 20px;
+    padding: 30px;
+    /* Even padding for perfect centering */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center vertically when closed */
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.15);
+    /* very transparent */
+    backdrop-filter: blur(15px);
+    /* strong glass effect */
+    -webkit-backdrop-filter: blur(15px);
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.ys-card-title {
+    font-family: var(--font-heading);
+    font-size: 26px;
+    /* slightly smaller title */
+    font-weight: 300;
+    color: #ffffff;
+    margin: 0;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ys-card-desc {
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #1d1d1b;
+    margin-top: 0;
+    /* Remove margin to prevent pushing title up when inactive */
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    /* Hide overflow to prevent layout shifts */
+    transition: all 0.4s ease;
+    text-align: left;
+}
+
+.ys-card-link {
+    display: flex;
+    /* Flex for putting text and arrow on opposite sides */
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: #1d1d1b;
+    text-decoration: none;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    text-align: left;
+}
+
+.ys-card-link span {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.ys-card-link:hover span {
+    transform: translateX(5px);
+}
+
+/* Active/Hover State */
+.ys-card.active,
+.ys-card:hover {
+    flex: 0 0 420px;
+    /* Big square */
+    max-width: 420px;
+    height: 420px;
+    /* Big square */
+    background: #ffffff;
+    /* Solid white background as requested */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    justify-content: flex-start;
+    /* Align text to top when open */
+    padding: 50px 40px;
+}
+
+.ys-card.active .ys-card-title,
+.ys-card:hover .ys-card-title {
+    color: #1d1d1b;
+    /* Dark text on white bg */
+    text-align: left;
+    font-size: 32px;
+    /* Larger title when open */
+    margin-bottom: 20px;
+}
+
+.ys-card.active .ys-card-desc,
+.ys-card:hover .ys-card-desc {
+    opacity: 1;
+    max-height: 200px;
+    margin-top: 0;
+    /* Let margin-bottom of title handle spacing */
+}
+
+.ys-card.active .ys-card-link,
+.ys-card:hover .ys-card-link {
+    opacity: 1;
+    max-height: 50px;
+    margin-top: auto;
+    /* Push link to bottom */
+    padding-top: 20px;
+    border-top: 1px solid #000;
+    /* Add top border for the link like Yucca */
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 900px) {
+    .ys-container {
+        flex-direction: column;
+    }
+
+    .ys-card {
+        height: auto;
+        min-height: 150px;
+    }
+
+    .ys-card.active,
+    .ys-card:hover {
+        min-height: 250px;
+    }
+}
+
+/* =========================================================================
+   NEW ONYX-STYLE SECTION 4: LA BRASSERIE (EXPERIENCE EXPERIENCE)
+}
+
+/* --- Section 4: Experience (La Brasserie Zoom Animation) --- */
+.section-experience {
+    position: relative;
+    width: 100%;
+    /* Create scrolling height for the animation */
+    height: 200vh;
+}
+
+.experience-sticky-frame {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Dark background behind the scaled image */
+    background-color: var(--bg-color);
+}
+
+.experience-bg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* will-change for smoother animation */
+    will-change: transform, border-radius;
+    overflow: hidden;
+}
+
+/* Add a dark overlay gradient to make text readable */
+.experience-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
+    z-index: 2;
+}
+
+.experience-bg img,
+.experience-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.experience-overlay {
+    position: relative;
+    z-index: 3;
+    /* Above the background and overlay */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5vw;
+    /* Move overlay to fixed centering inside sticky frame if needed */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.experience-text {
+    font-size: clamp(40px, 6vw, 80px);
+    /* Massive, impressive text */
+    font-weight: 300;
+    /* Thin, elegant weight */
+    color: #8cadcd;
+    /* Onyx light blue accent color */
+    line-height: 1.2;
+    text-align: center;
+    letter-spacing: 2px;
+    margin: 0;
+    font-family: var(--font-primary);
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    /* Ensure readability */
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 900px) {
+    .menu-container {
+        grid-template-columns: 1fr;
+        /* Stack menu and image */
+        gap: 50px;
+        padding: 60px 20px;
+    }
+
+    .menu-media-col {
+        position: relative;
+        top: auto;
+        height: 50vh;
+        order: -1;
+        /* Move image above the list on mobile */
+    }
+}
+
+/* --- Responsive Footer --- */
+@media screen and (max-width: 1200px) {
+    .footer .f-title {
+        font-size: 4rem;
+    }
+
+    .footer .f-content {
+        gap: 1.6rem;
+    }
+}
+
+
+
+.footer-wrapper {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    /* Below the main content which is z-index 2 */
+    overflow: hidden;
+    height: auto;
+}
+
+.footer {
+    padding: 4rem var(--container-offset, 8vw);
+    background: var(--bg-color);
+    color: var(--text-color);
+    will-change: transform;
+    height: unset;
+    position: relative;
+}
+
+.footer .f-header {
+    width: 100%;
+    margin-bottom: 12rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* Allow title and button to wrap */
+    gap: 3rem;
+}
+
+@media screen and (max-width: 768px) {
+    .footer .f-header {
+        margin-bottom: 6rem;
+    }
+
+    .footer .f-footer {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer .f-links {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+.footer .f-header .f-title {
+    font-size: clamp(3rem, 5vw, 5.6rem);
+    /* Responsive clamp */
+    line-height: 120%;
+    padding-right: 2.4rem;
+    font-weight: 300;
+    font-family: var(--font-primary) !important;
+}
+
+.footer .f-header .btn-back {
+    flex-shrink: 0;
+    width: 6.4rem;
+    height: 6.4rem;
+    position: relative;
+    border-radius: .8rem;
+    border: 1px solid var(--text-color);
+    transition: background-color .4s ease;
+    cursor: pointer;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+}
+
+.footer .f-header .btn-back:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+
+
+.footer .f-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.4rem;
+    width: 100%;
+    margin-bottom: 2.4rem;
+}
+
+@media screen and (max-width: 900px) {
+    .footer .f-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .footer .f-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.footer .f-content .f-content-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.footer .f-content .f-content-col svg {
+    width: 100%;
+    height: auto;
+}
+
+.footer .f-content .f-content-col .f-logo {
+    width: 100%;
+    height: auto;
+    max-width: 15rem;
+    object-fit: contain;
+}
+
+.footer .f-content .f-content-col .f-solution {
+    width: 100%;
+    height: 100%;
+    padding: 2.4rem;
+    position: relative;
+    border: 1px solid var(--text-color);
+    border-radius: 1.6rem;
+    transition: 1s ease;
+    transition-property: border-radius, border-color;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer .f-content .f-content-col .f-solution:hover {
+    border-radius: 10rem;
+    border-color: rgba(0, 0, 0, 0);
+}
+
+.footer .f-content .f-content-col .f-solution:hover .media-wrapper {
+    opacity: 1;
+}
+
+.footer .f-content .f-content-col .f-solution:hover .media-wrapper .media-inner {
+    transform: scale(1);
+}
+
+.footer .f-content .f-content-col .f-solution:hover .f-solution-title {
+    color: #ffffff;
+}
+
+.footer .f-content .f-content-col .f-solution .f-solution-link {
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.footer .f-content .f-content-col .f-solution .media-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity .6s ease;
+    background: #000;
+}
+
+.footer .f-content .f-content-col .f-solution .media-wrapper .media-inner {
+    opacity: .7;
+    transform: scale(1.2);
+    transition: transform 1.6s ease;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+}
+
+.footer .f-content .f-content-col .f-solution .media-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.footer .f-content .f-content-col .f-solution .f-solution-title {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    font-size: 3.2rem;
+    z-index: 2;
+    transition: color 0.6s ease;
+    font-weight: 300;
+}
+
+.footer .f-footer {
+    width: 100%;
+    padding: 1.2rem;
+    border-radius: .8rem;
+    border: 1px solid var(--text-color);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    /* Allow wrapping */
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1.5rem;
+    /* Add gap for wrapped items */
+}
+
+.footer .f-footer .f-copyright {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+
+.footer .f-footer .f-copyright svg {
+    width: 1.6rem;
+    margin-right: .8rem;
+}
+
+.footer .f-footer .f-socials {
+    display: flex;
+    align-items: center;
+}
+
+.footer .f-footer .f-socials .f-social {
+    display: block;
+    transition: transform .5s ease;
+    will-change: transform;
+    margin-right: 1.6rem;
+}
+
+.footer .f-footer .f-socials .f-social:hover {
+    transform: scale(1.1);
+}
+
+.footer .f-footer .f-socials .f-social svg {
+    display: block;
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+.footer .f-footer .f-links {
+    display: flex;
+    align-items: center;
+}
+
+.footer .f-footer .f-links .f-link {
+    display: block;
+    position: relative;
+    color: var(--text-color);
+    overflow: hidden;
+    font-size: 1.4rem;
+    margin-right: 1.6rem;
+    text-decoration: none;
+    font-weight: 300;
+}
+
+.footer .f-footer .f-links .f-link:hover {
+    text-decoration: underline;
+}
+
+
+
+/* Responsive adjustments */
+@media screen and (max-width: 900px) {
+    .footer .f-header {
+        margin-bottom: 6rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
+    .footer .f-header .f-title {
+        font-size: 3.2rem;
+        padding-right: 0;
+    }
+
+    .footer .f-header .btn-back {
+        align-self: flex-end;
+    }
+
+    .footer .f-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer .f-content .f-content-col {
+        min-height: 200px;
+    }
+
+    .footer .f-footer {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .footer .f-footer .f-copyright,
+    .footer .f-footer .f-socials,
+    .footer .f-footer .f-links {
+        justify-content: center;
+        width: 100%;
+        margin: 0;
+        order: unset;
+        /* Remove order properties which were confusing the layout */
+    }
+
+    .footer .f-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .footer {
+        padding: 4rem 20px;
+    }
+
+    .footer .f-content {
+        grid-template-columns: 1fr;
+        /* Stack vertically */
+    }
+
+    .footer .f-content .f-content-col .f-solution {
+        height: 200px;
+        /* Fixed height for cards on mobile */
+    }
+
+    .footer .f-header .f-title {
+        font-size: 2.8rem;
+    }
+}
+
+/* =========================================================================
+   SECTION: THE KITCHEN (CLONED FROM ONYX BREWERY)
+   ========================================================================= */
+
+.section-kitchen {
+    background-color: #0a1c14;
+    /* Dark navy/charcoal from Onyx */
+    color: #ffffff;
+    padding: 120px 0;
+    overflow: hidden;
+}
+
+.kitchen-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 46px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.kitchen-media-col {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    height: auto;
+}
+
+.kitchen-image-large,
+.kitchen-image-small {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    /* Rectangular as requested */
+    height: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.kitchen-image-small {
+    border: none;
+}
+
+.kitchen-image-large img,
+.kitchen-image-small img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.kitchen-heading-box {
+    display: inline-block;
+    background-color: #e5dada;
+    /* Beige highlight from screenshot */
+    padding: 10px 30px;
+    margin-bottom: 40px;
+}
+
+.kitchen-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(35px, 4vw, 55px);
+    font-weight: 400;
+    color: #1d1d1b;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+    margin: 0;
+}
+
+.kitchen-desc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.kitchen-desc {
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.kitchen-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 15px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.kitchen-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+}
+
+/* =========================================================================
+   SECTION: LARGE TEXT OVERLAY
+   ========================================================================= */
+
+.section-text-overlay {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0a1c14;
+}
+
+.overlay-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    z-index: 1;
+}
+
+.overlay-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.overlay-title {
+    font-size: clamp(100px, 18vw, 280px);
+    line-height: 0.9;
+    letter-spacing: -0. 02em;
+    font-weight: 700;
+}
+
+.text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px #ffffff;
+}
+
+.text-solid {
+    color: #ffffff;
+}
+
+/* =========================================================================
+   SECTION: RESERVATION TICKER (ADVANCED MULTI-ROW)
+   ========================================================================= */
+
+.section-ticker {
+    background-color: #0a1c14;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.ticker-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    /* Space between rows */
+}
+
+.ticker-row {
+    display: flex;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.ticker-content {
+    display: flex;
+}
+
+/* Row 1: Medium (35s) */
+.ticker-row-1 .ticker-content {
+    animation: ticker 35s linear infinite;
+}
+
+/* Row 2: Fast (20s) */
+.ticker-row-2 .ticker-content {
+    animation: ticker 20s linear infinite;
+}
+
+/* Row 3: Slow (50s) */
+.ticker-row-3 .ticker-content {
+    animation: ticker 50s linear infinite;
+}
+
+.ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 0 60px;
+    color: #ffffff;
+    font-size: 26px;
+    /* Slightly larger, more elegant */
+    font-weight: 200;
+    /* Very light weight for elegance */
+    text-transform: lowercase;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.ticker-item:hover {
+    color: #e5dada;
+    /* Subtle beige hover */
+}
+
+.ticker-arrow {
+    width: 28px;
+    height: 28px;
+    opacity: 0.8;
+}
+
+@keyframes ticker {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .kitchen-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .kitchen-media-col {
+        height: 400px;
+    }
+
+    .kitchen-desc-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================================
+   MENU PAGE SPECIFIC STYLES (Le Pain Quotidien Inspired)
+   ========================================================================= */
+
+body {
+    /* Ensure the body has the smooth scrolling from the existing css */
+}
+
+.menu-page {
+    background-color: #FBF5EE;
+    /* Cream background */
+    min-height: 100vh;
+    padding-top: 120px;
+    /* Space for the sticky header */
+}
+
+.menu-container.lpq-theme {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Category Navigation (Sticky) */
+.lpq-menu-nav-wrapper {
+    position: sticky;
+    top: 80px;
+    /* Adjust according to header height */
+    background-color: #FBF5EE;
+    z-index: 50;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #E5E7EB;
+    /* Optional: hide scrollbar but allow horizontal scroll on mobile */
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.lpq-menu-nav-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.lpq-menu-tabs {
+    display: flex;
+    white-space: nowrap;
+    gap: 32px;
+}
+
+.lpq-menu-tab {
+    background: none;
+    border: none;
+    padding: 16px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #C9C6BF;
+    /* Inactive color */
+    cursor: pointer;
+    text-transform: uppercase;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.lpq-menu-tab:hover {
+    color: #000000;
+}
+
+.lpq-menu-tab.active {
+    color: #000000;
+    font-weight: 600;
+}
+
+.lpq-menu-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #FFD02A;
+    /* Active Yellow Accent */
+}
+
+/* Menu Content & Grid Layout */
+.lpq-menu-content {
+    display: none;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.lpq-menu-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lpq-top-hr {
+    height: 1px;
+    background-color: #000000;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.lpq-menu-category-title {
+    font-size: 48px;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    color: #000000;
+    font-family: var(--font-heading);
+    letter-spacing: 0.05em;
+}
+
+/* 3 Column Grid */
+.lpq-menu-item-list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 32px;
+    margin-bottom: 80px;
+}
+
+@media (min-width: 768px) {
+    .lpq-menu-item-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .lpq-menu-item-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Premium Card Design */
+.lpq-menu-item {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.lpq-image-container {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background-color: #E5E7EB;
+    /* Placeholder gray */
+    margin-bottom: 0;
+    /* Attach directly to card body */
+}
+
+.lpq-item-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.lpq-menu-item:hover .lpq-item-img {
+    transform: scale(1.03);
+}
+
+.lpq-img-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #F1EFEA;
+}
+
+.lpq-card-body {
+    background-color: #FFFFFF;
+    padding: 24px 32px 24px 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.lpq-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.lpq-item-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #000000;
+    margin: 0;
+    padding-right: 16px;
+    line-height: 1.4;
+}
+
+.lpq-item-price {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.lpq-item-desc {
+    font-size: 15px;
+    color: #4B5563;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    font-weight: 400;
+    flex-grow: 1;
+    /* Pushes tags to the bottom */
+}
+
+.lpq-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.lpq-badge {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #FDC400;
+    /* Beautiful yellow/gold for tags */
+    font-family: var(--font-primary);
+    letter-spacing: 0.5px;
+}
+
+
+/* Clone Onyx Menu CSS */
+.grid {
+    display: grid;
+    gap: var(--grid-gutter);
+    column-gap: var(--grid-gutter);
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%
+}
+
+@media (min-width:1000px) {
+    .grid {
+        grid-template-columns: repeat(var(--grid-columns), 1fr)
+    }
+}
+
+.grid.-center-items {
+    align-items: center
+}
+
+.grid.-center-items {
+    justify-items: center
+}
+
+.grid.-center-items-y {
+    align-items: center
+}
+
+.grid:is(ul) {
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+
+.grid_item {
+    grid-column-end: var(--gc-end, -1);
+    grid-column-start: var(--gc-start, 1)
+}
+
+.grid_item.sticky {
+    align-self: flex-start
+}
+
+.-body-medium {
+    font-size: var(--font-size-body-medium);
+    line-height: 1.2
+}
+
+.-body-large {
+    font-size: var(--font-size-body-large);
+    line-height: 1.2
+}
+
+.-body-small {
+    font-size: var(--font-size-body-small);
+    line-height: 1.2
+}
+
+* .-h1 {
+    margin-top: .666em
+}
+
+.-huge {
+    font-size: var(--font-size-huge);
+    line-height: 1
+}
+
+.-h1,
+h1 {
+    font-size: var(--font-size-h1);
+    line-height: 1.1
+}
+
+.-h2,
+h2 {
+    font-size: var(--font-size-h2);
+    line-height: 1.1
+}
+
+.-h3,
+h3 {
+    font-size: var(--font-size-h3);
+    line-height: 1.1
+}
+
+.-h5,
+h5 {
+    font-size: var(--font-size-h5);
+    line-height: 1.2
+}
+
+.-h6 {
+    font-size: var(--font-size-h6);
+    line-height: 1.4
+}
+
+.btn {
+    align-items: center;
+    border: 1px solid;
+    color: #0c1e30;
+    display: inline-flex;
+    font-family: var(--font-heading);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    font-size: var(--font-size-body-medium);
+    line-height: 1.2;
+    padding: calc(var(--vr, 1px)*15) calc(var(--vr, 1px)*30);
+    transition: background .75s cubic-bezier(.215, .61, .355, 1), border .75s cubic-bezier(.215, .61, .355, 1), color .75s cubic-bezier(.215, .61, .355, 1)
+}
+
+@media (min-width:1200px) {
+    .btn {
+        padding: calc(var(--vr, 1px)*20) calc(var(--vr, 1px)*40)
+    }
+}
+
+.btn svg {
+    transition: transform .75s cubic-bezier(.215, .61, .355, 1)
+}
+
+@media (max-width:699px) {
+    .btn svg {
+        height: auto;
+        max-width: 20px
+    }
+}
+
+.btn svg path {
+    fill: currentColor;
+    transition: fill .75s cubic-bezier(.215, .61, .355, 1)
+}
+
+.btn.-active,
+.btn:focus,
+.btn:hover {
+    background: #0c1e30;
+    border-color: #0c1e30;
+    color: #fff
+}
+
+.btn.-active svg,
+.btn:focus svg,
+.btn:hover svg {
+    transform: translate3d(5px, 0, 0)
+}
+
+.btn.-md {
+    padding: calc(var(--vr, 1px)*12) calc(var(--vr, 1px)*24)
+}
+
+@media (min-width:1200px) {
+    .btn.-md {
+        padding: calc(var(--vr, 1px)*12) calc(var(--vr, 1px)*24)
+    }
+}
+
+.btn.-md svg {
+    height: auto;
+    max-width: 20px
+}
+
+.btn.-alt {
+    border: none;
+    padding: 0
+}
+
+.btn.-alt:focus,
+.btn.-alt:hover {
+    background: none;
+    color: #dcba92
+}
+
+.btn-top,
+button.btn {
+    background: none
+}
+
+.btn-top {
+    align-items: center;
+    border: none;
+    color: #0c1e30;
+    cursor: pointer;
+    display: inline-flex;
+    gap: var(--spacing-xs);
+    padding: 0
+}
+
+.btn-top svg {
+    transform: rotate(-90deg)
+}
+
+@media (prefers-reduced-motion:no-preference) {
+
+    [data-reveal=title][data-anim=chars-rotate-x].-huge .word,
+    [data-reveal=title][data-anim=words-rotate-x].-huge .word {
+        perspective: 2000px
+    }
+}
+
+.listplats__item {
+    margin-bottom: var(--spacing)
+}
+
+.listplats__item__infos {
+    align-items: center;
+    display: flex
+}
+
+.listplats__item__name {
+    font-size: var(--font-size-body-large);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-xs);
+    margin-right: 8px
+}
+
+.listplats__item__price {
+    color: #b57c3a;
+    flex-shrink: 0;
+    font-size: var(--font-size-body-medium);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-left: auto
+}
+
+.tabs-nav {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background: #ffffffb3;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-xs);
+    padding-top: 5px;
+    z-index: 1
+}
+
+.tabs-nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    display: flex;
+    gap: var(--spacing);
+    justify-content: center
+}
+
+.tabs-nav__link {
+    cursor: pointer
+}
+
+.tabs-content {
+    position: relative
+}
+
+.tabs-content:after {
+    background: #fff;
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform-origin: bottom;
+    transition: transform .75s cubic-bezier(.215, .61, .355, 1);
+    width: 100%;
+    z-index: 1
+}
+
+.tabs-content:not(.-is-animating):after {
+    pointer-events: none;
+    transform: scaleY(0);
+    transform-origin: top
+}
+
+.tabs-content__item {
+    display: none
+}
+
+.tabs-content__item.-active {
+    display: block
+}
+
+.tabs-images {
+    position: relative
+}
+
+.tabs-images picture {
+    width: 100%
+}
+
+.tabs-images picture:not(:first-child) {
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 1
+}
+
+.tabs-images img {
+    transition: opacity .75s cubic-bezier(.215, .61, .355, 1)
+}
+
+.tabs-images img:not(.-active) {
+    opacity: 0
+}
+
+.-gc-2_5 {
+    --gc-start: 2;
+    --gc-end: 5
+}
+
+@media (min-width:1000px) {
+    .-gc-1_5--from-md {
+        --gc-start: 1;
+        --gc-end: 5
+    }
+}
+
+@media (min-width:1000px) {
+    .-gc-1_6--from-md {
+        --gc-start: 1;
+        --gc-end: 6
+    }
+}
+
+@media (min-width:1000px) {
+    .-gc-1_7--from-md {
+        --gc-start: 1;
+        --gc-end: 7
+    }
+}
+
+@media (min-width:1000px) {
+    .-gc-1_10--from-md {
+        --gc-start: 1;
+        --gc-end: 10
+    }
+}
+
+@media (min-width:1000px) {
+    .-gc-2_12--from-md {
+        --gc-start: 2;
+        --gc-end: 12
+    }
+}
+
+@media (min-width:1000px) {
+    .-gc-3_11--from-md {
+        --gc-start: 3;
+        --gc-end: 11
+    }
+}
+
+@media (min-width:1000px) {
+    .-gc-5_9--from-md {
+        --gc-start: 5;
+        --gc-end: 9
+    }
+}
+
+@media (min-width:1000px) {
+    .-gc-6_12--from-md {
+        --gc-start: 6;
+        --gc-end: 12
+    }
+}
+
+@media (min-width:1000px) {
+    .-gc-6_13--from-md {
+        --gc-start: 6;
+        --gc-end: 13
+    }
+}
+
+@media (min-width:1000px) {
+    .-gc-7_13--from-md {
+        --gc-start: 7;
+        --gc-end: 13
+    }
+}
+
+@media (min-width:1000px) {
+    .-gc-8_13--from-md {
+        --gc-start: 8;
+        --gc-end: 13
+    }
+}
+
+@media (min-width:1000px) {
+    .-gc-9_13--from-md {
+        --gc-start: 9;
+        --gc-end: 13
+    }
+}
+
+.img-cover {
+    height: 100%;
+    object-fit: cover;
+    width: 100%
+}
+
+.bg-primary .-h1,
+.bg-primary .-h2,
+.bg-primary .-h3,
+.bg-primary .-h5,
+.bg-primary .-h6,
+.bg-primary .heading,
+.bg-primary h1,
+.bg-primary h2,
+.bg-primary h3,
+.bg-primary h4,
+.bg-primary h5 {
+    color: currentColor
+}
+
+.bg-primary .btn:focus,
+.bg-primary .btn:hover {
+    border-color: #dcba92
+}
+
+.pt-md {
+    padding-top: var(--spacing-md) !important
+}
+
+.pb-xs {
+    padding-bottom: var(--spacing-xs) !important
+}
+
+.pb-md {
+    padding-bottom: var(--spacing-md) !important
+}
+
+.pb-xl {
+    padding-bottom: var(--spacing-xl) !important
+}
+
+.py-xs {
+    padding-bottom: var(--spacing-xs) !important;
+    padding-top: var(--spacing-xs) !important
+}
+
+.py-lg {
+    padding-bottom: var(--spacing-lg) !important;
+    padding-top: var(--spacing-lg) !important
+}
+
+.mb-xs {
+    margin-bottom: var(--spacing-xs) !important
+}
+
+.mb-md {
+    margin-bottom: var(--spacing-md) !important
+}
+
+.mb-lg {
+    margin-bottom: var(--spacing-lg) !important
+}
+
+.mb-xl {
+    margin-bottom: var(--spacing-xl) !important
+}
+
+.mb-none {
+    margin-bottom: 0 !important
+}
+
+@media (min-width:1000px) {
+    .py-lg--from-md {
+        padding-bottom: var(--spacing-lg) !important;
+        padding-top: var(--spacing-lg) !important
+    }
+}
+
+@media (min-width:1000px) {
+    .mb--from-md {
+        margin-bottom: var(--grid-gutter) !important
+    }
+}
+
+@media (min-width:1000px) {
+    .mb-none--from-md {
+        margin-bottom: 0 !important
+    }
+}
+
+@media (min-width:1200px) {
+    .mb-lg--from-lg {
+        margin-bottom: var(--spacing-lg) !important
+    }
+}
+
+@media (min-width:1400px) {
+    .pt-xl--from-xl {
+        padding-top: var(--spacing-xl) !important
+    }
+}
+
+@media (min-width:1400px) {
+    .mb-lg--from-xl {
+        margin-bottom: var(--spacing-lg) !important
+    }
+}
+
+@media (min-width:1400px) {
+    .mb-2xl--from-xl {
+        margin-bottom: var(--spacing-2xl) !important
+    }
+}
+
+/* Typography fixes for Cloned Onyx Menu */
+.section-onyx-menu {
+    --font-onyx-heading: 'Cormorant Garamond', serif;
+    --font-onyx-body: 'Montserrat', sans-serif;
+    color: #0c1e30;
+    /* Ensure dark text by default */
+}
+
+.section-onyx-menu .-h1,
+.section-onyx-menu h1,
+.section-onyx-menu .-h2,
+.section-onyx-menu h2,
+.section-onyx-menu .-h3,
+.section-onyx-menu h3,
+.section-onyx-menu .-h4,
+.section-onyx-menu h4,
+.section-onyx-menu .-h5,
+.section-onyx-menu h5,
+.section-onyx-menu .-h6,
+.section-onyx-menu h6,
+.section-onyx-menu [data-reveal="title"] {
+    font-family: var(--font-onyx-heading) !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.05em;
+    color: #0c1e30;
+}
+
+.section-onyx-menu .btn {
+    font-family: var(--font-onyx-heading) !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.05em;
+    text-transform: none;
+}
+
+.section-onyx-menu p.mb-lg {
+    font-family: var(--font-onyx-body);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: #333;
+    line-height: 1.6;
+}
+
+.section-onyx-menu .-body-small em,
+.section-onyx-menu em {
+    font-family: var(--font-onyx-body) !important;
+    font-style: italic !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.05em;
+    color: #555;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.section-onyx-menu .listplats__item__name {
+    font-family: var(--font-onyx-heading) !important;
+    font-weight: 300 !important;
+    font-size: 1.5rem !important;
+    letter-spacing: 0.05em;
+    color: #0c1e30;
+}
+
+.section-onyx-menu .listplats__item__description {
+    font-family: var(--font-onyx-body) !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.02em;
+    color: #555;
+    font-size: 0.95rem;
+    margin-top: 6px;
+    line-height: 1.5;
+}
+
+.section-onyx-menu .listplats__item__price {
+    font-family: var(--font-onyx-body) !important;
+    font-weight: 400 !important;
+    font-size: 1rem !important;
+    color: #925324;
+    /* Adjusted to a nice brown/gold color based on Onyx */
+}
+
+/* Adjusting sizes to perfectly match the user screenshot */
+.section-onyx-menu h2 {
+    font-size: 3.5rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.section-onyx-menu h3 {
+    font-size: 2.5rem !important;
+    margin-bottom: 1rem !important;
+    margin-top: 2rem !important;
+}
+
+.section-onyx-menu h4 {
+    font-size: 1.75rem !important;
+    margin-bottom: 1.5rem !important;
+    margin-top: 2.5rem !important;
+}
+
+.section-onyx-menu p.mb-lg {
+    font-size: 1rem !important;
+    margin-bottom: 2rem !important;
+}
+
+.section-onyx-menu .listplats__item {
+    margin-bottom: 1.5rem !important;
+}
+
+/* Framework variables for Onyx Menu Grid and Spacing */
+.section-onyx-menu {
+    --grid-columns: 4;
+    --grid-gutter: 24px;
+    --spacing-xs: 12px;
+    --spacing-sm: 24px;
+    --spacing: 36px;
+    --spacing-md: 60px;
+    --spacing-lg: 90px;
+    --spacing-xl: 140px;
+    --spacing-2xl: 180px;
+    --gc-start: 1;
+    --gc-end: -1;
+    padding: 5% 5% !important;
+    /* Forces padding around text and grid */
+}
+
+@media (min-width: 1000px) {
+    .section-onyx-menu {
+        --grid-columns: 12;
+    }
+}
+
+/* Ensure picture inside tabs-images is properly bounded and animated setup */
+#tabs-images-carte {
+    opacity: 0;
+    transform: translateY(30px);
+    will-change: opacity, transform;
+}
+
+@media (min-width: 1000px) {
+    .section-onyx-menu .sticky {
+        position: sticky;
+        top: 100px;
+        height: calc(100vh - 100px);
+        /* Fill the viewport minus header offset */
+    }
+
+    .section-onyx-menu .tabs-images {
+        height: 100%;
+    }
+}
+
+/* Ensure frame stays fixed size during image zoom */
+.section-onyx-menu .tabs-images {
+    overflow: hidden;
+    position: relative;
+    will-change: transform;
+}
+
+.section-onyx-menu .tabs-images img {
+    will-change: transform;
+}
