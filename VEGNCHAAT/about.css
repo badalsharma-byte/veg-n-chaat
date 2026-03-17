@@ -1,0 +1,684 @@
+/* ===================================================
+   about.css — Our Story Page (Onyx-inspired design)
+   =================================================== */
+
+/* ── Body override for about page ── */
+body.about-page {
+    background-color: #fff;
+    overflow-x: hidden;
+    padding-top: var(--header-height, 65px);
+}
+
+/* ── Shared utilities ── */
+.about-clip-hidden {
+    overflow: hidden;
+}
+
+.about-fade-line {
+    overflow: hidden;
+}
+
+/* ===================================================
+   SECTION 1 — HERO
+   =================================================== */
+.about-hero {
+    min-height: calc(100vh - var(--header-height, 65px));
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: #fff;
+    padding: 0;
+    overflow: hidden;
+}
+
+.about-hero-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+}
+
+.about-hero-letters {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(80px, 15vw, 240px);
+    font-weight: 100;
+    line-height: 0.85;
+    color: #1d1d1b;
+    flex: 1;
+    text-align: center;
+    user-select: none;
+    letter-spacing: -0.02em;
+}
+
+.about-hero-letters span.accent-orange {
+    color: #f26522;
+}
+
+.about-hero-letters span.accent-green {
+    color: #00a651;
+}
+
+.about-hero-image-wrap {
+    width: 27vw;
+    max-width: 400px;
+    min-width: 200px;
+    height: 60vh;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    margin: 0 -1vw;
+    flex-shrink: 0;
+}
+
+.about-hero-image-inner {
+    width: 100%;
+    height: 120%;
+    position: relative;
+    top: -10%;
+    will-change: transform;
+}
+
+.about-hero-image-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-hero-caption {
+    margin-top: 3rem;
+    text-align: center;
+    padding: 0 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.about-hero-caption p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.2vw, 1.8rem);
+    font-weight: 300;
+    font-style: italic;
+    color: #1d1d1b;
+    line-height: 1.4;
+}
+
+/* ===================================================
+   SECTION 2 — GALLERY STRIP (3 images)
+   =================================================== */
+.about-gallery {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.about-gallery-item {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-right: 1px solid #e0e0e0;
+}
+
+.about-gallery-item:last-child {
+    border-right: none;
+}
+
+.about-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
+
+.about-gallery-item:hover img {
+    transform: scale(1.04);
+}
+
+/* ===================================================
+   SECTION 3 — NARRATIVE
+   =================================================== */
+.about-narrative {
+    padding: 10rem 5vw;
+    background: #fff;
+}
+
+.about-narrative-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.about-narrative-content {
+    padding-right: 3rem;
+}
+
+.about-narrative-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #888;
+    margin-bottom: 2rem;
+}
+
+.about-narrative-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 4.5vw, 5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 2.5rem;
+    color: #1d1d1b;
+}
+
+.about-narrative-body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+}
+
+.about-narrative-body p + p {
+    margin-top: 1rem;
+}
+
+.about-btn-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: #1d1d1b;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid #1d1d1b;
+    padding: 14px 28px;
+    transition: all 0.3s ease;
+}
+
+.about-btn-arrow:hover {
+    background-color: #1d1d1b;
+    color: #fff;
+}
+
+.about-narrative-image {
+    width: 100%;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    position: relative;
+    will-change: transform;
+}
+
+.about-narrative-image img {
+    width: 100%;
+    height: 110%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    will-change: transform;
+}
+
+/* ===================================================
+   SECTION 4 — FULL-WIDTH IMAGE (parallax)
+   =================================================== */
+.about-fullwidth {
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.about-fullwidth-inner {
+    width: 100%;
+    height: 130%;
+    position: relative;
+    top: -15%;
+    will-change: transform;
+}
+
+.about-fullwidth-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===================================================
+   SECTION 5 — DARK SECTION
+   =================================================== */
+.about-dark {
+    background-color: #111820;
+    color: #fff;
+    padding: 8rem 5vw;
+    position: relative;
+}
+
+.about-dark-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.about-dark-left {
+    position: relative;
+}
+
+.about-dark-word {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 7vw, 9rem);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255,255,255,0.15);
+    line-height: 1;
+    margin-bottom: 4rem;
+    letter-spacing: -0.03em;
+    overflow: hidden;
+}
+
+.about-dark-word .char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.about-dark-address {
+    margin-top: 4rem;
+}
+
+.about-dark-address p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.9;
+    margin: 0;
+}
+
+.about-dark-address .addr-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 0.5rem;
+    margin-top: 2rem;
+}
+
+.about-dark-right {
+    padding-top: 2rem;
+}
+
+.about-dark-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 4rem);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+}
+
+.about-dark-body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+}
+
+.about-btn-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 14px 28px;
+    transition: all 0.3s ease;
+}
+
+.about-btn-light:hover {
+    border-color: #fff;
+    background: #fff;
+    color: #111820;
+}
+
+/* ===================================================
+   SECTION 6 — ARCHITECTURE / SPACES
+   =================================================== */
+.about-spaces {
+    padding: 10rem 5vw;
+    background: #fff;
+}
+
+.about-spaces-header {
+    max-width: 800px;
+    margin: 0 auto 6rem;
+    text-align: center;
+}
+
+.about-spaces-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #888;
+    margin-bottom: 1.5rem;
+}
+
+.about-spaces-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #1d1d1b;
+}
+
+.about-spaces-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-spaces-col:last-child {
+    margin-top: 12rem;
+}
+
+.about-spaces-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    max-width: 420px;
+}
+
+.about-spaces-image {
+    width: 100%;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    position: relative;
+}
+
+.about-spaces-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
+
+.about-spaces-image:hover img {
+    transform: scale(1.04);
+}
+
+/* ===================================================
+   SECTION 7 — MARQUEE TICKER
+   =================================================== */
+.about-marquee {
+    overflow: hidden;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 12px 0;
+    background: #fff;
+    cursor: default;
+}
+
+.about-marquee-track {
+    display: flex;
+    white-space: nowrap;
+    will-change: transform;
+}
+
+.about-marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    font-weight: 300;
+    font-style: italic;
+    color: #1d1d1b;
+    flex-shrink: 0;
+}
+
+.about-marquee-item .arrow {
+    font-style: normal;
+    color: #f26522;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-size: 1rem;
+}
+
+/* ===================================================
+   SECTION 8 — VISIT / CONTACT
+   =================================================== */
+.about-visit {
+    padding: 8rem 5vw;
+    background: #fff;
+    overflow: hidden;
+}
+
+.about-visit-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.about-visit-left {}
+
+.about-visit-word {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 12vw, 14rem);
+    font-weight: 300;
+    color: #1d1d1b;
+    line-height: 0.85;
+    margin-bottom: 4rem;
+    letter-spacing: -0.04em;
+}
+
+.about-visit-address p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #555;
+    line-height: 1.9;
+    margin: 0;
+}
+
+.about-visit-address .v-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #aaa;
+    margin-bottom: 0.4rem;
+    margin-top: 1.5rem;
+}
+
+.about-visit-right {
+    padding-top: 2rem;
+    position: relative;
+}
+
+.about-visit-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    margin-bottom: 4rem;
+}
+
+.about-visit-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-visit-contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.about-visit-contact-item {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 1.5rem;
+}
+
+.about-visit-contact-item .vc-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #aaa;
+    margin-bottom: 0.5rem;
+}
+
+.about-visit-contact-item a,
+.about-visit-contact-item p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #1d1d1b;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.about-visit-contact-item a:hover {
+    opacity: 0.6;
+}
+
+.about-visit-socials {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.about-visit-social-link {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    text-decoration: none;
+    color: #1d1d1b;
+    border-bottom: 1px solid #1d1d1b;
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+}
+
+.about-visit-social-link:hover {
+    opacity: 0.5;
+}
+
+/* ===================================================
+   ANIMATION BASE STATES
+   =================================================== */
+.about-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.about-reveal-left {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+.about-reveal-right {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+/* ===================================================
+   RESPONSIVE
+   =================================================== */
+@media (max-width: 1024px) {
+    .about-narrative-inner,
+    .about-dark-inner,
+    .about-visit-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .about-narrative-content {
+        padding-right: 0;
+    }
+
+    .about-spaces-col:last-child {
+        margin-top: 0;
+    }
+
+    .about-hero-letters {
+        font-size: clamp(50px, 12vw, 140px);
+    }
+}
+
+@media (max-width: 768px) {
+    .about-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .about-gallery-item {
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+        aspect-ratio: 16/9;
+    }
+
+    .about-gallery-item:last-child {
+        border-bottom: none;
+    }
+
+    .about-spaces-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-visit-contact {
+        grid-template-columns: 1fr;
+    }
+
+    .about-narrative {
+        padding: 5rem 5vw;
+    }
+
+    .about-spaces {
+        padding: 5rem 5vw;
+    }
+
+    .about-hero-image-wrap {
+        width: 50vw;
+        height: 45vh;
+    }
+
+    .about-dark {
+        padding: 5rem 5vw;
+    }
+}

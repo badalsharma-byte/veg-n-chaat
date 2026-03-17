@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story — Veg n Chaat</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="about.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:ital,wght@0,300;0,400;1,300;1,400&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="about-page">
+
+    <!-- ======================== HEADER ======================== -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-link">
+                <img src="../Assets/logo.png" alt="Vegn Chaat Logo" class="site-logo">
+                <div class="logo-text">
+                    <span class="logo-text-bold">Vegn</span>
+                    <span class="logo-text-light">Chaat</span>
+                </div>
+            </a>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item has-dropdown" data-dropdown="shop">
+                        <a href="menu.html" class="nav-link">
+                            <span class="roll-text">
+                                <span class="text-upper">Menu</span>
+                                <span class="text-lower">Menu</span>
+                            </span>
+                        </a>
+                        <div class="megamenu" id="shop-menu">
+                            <div class="megamenu-container shop-grid">
+                                <div class="shop-categories">
+                                    <a href="menu.html#appetizers" class="category-link yucca-hover">
+                                        <div class="roll-text">
+                                            <span class="text-upper">Appetizers</span>
+                                            <span class="text-lower">Appetizers</span>
+                                        </div>
+                                        <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </a>
+                                    <a href="menu.html#chaat" class="category-link yucca-hover">
+                                        <div class="roll-text">
+                                            <span class="text-upper">Chaat Specialties</span>
+                                            <span class="text-lower">Chaat Specialties</span>
+                                        </div>
+                                        <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </a>
+                                    <a href="menu.html#monthly-specials" class="category-link yucca-hover">
+                                        <div class="roll-text">
+                                            <span class="text-upper">Monthly Specials</span>
+                                            <span class="text-lower">Monthly Specials</span>
+                                        </div>
+                                        <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </a>
+                                    <a href="menu.html#vegetable-entrees" class="category-link yucca-hover">
+                                        <div class="roll-text">
+                                            <span class="text-upper">Entrees</span>
+                                            <span class="text-lower">Entrees</span>
+                                        </div>
+                                        <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </a>
+                                    <a href="menu.html#desserts" class="category-link yucca-hover">
+                                        <div class="roll-text">
+                                            <span class="text-upper">Desserts</span>
+                                            <span class="text-lower">Desserts</span>
+                                        </div>
+                                        <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </a>
+                                    <div class="hover-trigger-card">
+                                        <div class="shop-all-divider"></div>
+                                        <a href="menu.html" class="category-link shop-all card-link-anim" style="display:flex; padding-top: 20px;">
+                                            <span class="hover-text">View All Dishes</span>
+                                            <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="shop-custom-card hover-trigger-card">
+                                    <h3>Special Offers</h3>
+                                    <p>Check out our latest deals and discounts</p>
+                                    <div class="card-bottom" style="margin-top: auto;">
+                                        <div class="card-divider light"></div>
+                                        <a href="#" class="card-link light card-link-anim">
+                                            <span class="hover-text">Explore</span>
+                                            <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="shop-promos-col">
+                                    <div class="promo-card loyalty-card hover-trigger-card">
+                                        <h3>Join our loyalty programme to earn 5% back</h3>
+                                        <div class="card-divider dark"></div>
+                                        <a href="#" class="card-link light card-link-anim">
+                                            <span class="hover-text">Discover Now</span>
+                                            <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                        </a>
+                                    </div>
+                                    <div class="promo-card return-card hover-trigger-card">
+                                        <h3>Promotions return soon</h3>
+                                        <p>We believe in fair, transparent pricing.</p>
+                                        <div class="card-divider light"></div>
+                                        <a href="#" class="card-link light card-link-anim">
+                                            <span class="hover-text">Explore menu</span>
+                                            <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item has-dropdown" data-dropdown="packaging">
+                        <a href="#" class="nav-link">
+                            <span class="roll-text">
+                                <span class="text-upper">Catering</span>
+                                <span class="text-lower">Catering</span>
+                            </span>
+                        </a>
+                        <div class="megamenu" id="packaging-menu">
+                            <div class="megamenu-container packaging-grid">
+                                <div class="pack-card has-bg food-service-bg hover-trigger-card">
+                                    <h3>Catering Packages</h3>
+                                    <div class="card-bottom">
+                                        <div class="card-divider light"></div>
+                                        <a href="#" class="card-link light card-link-anim">
+                                            <span class="hover-text">Explore</span>
+                                            <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="pack-card has-bg food-processing-bg hover-trigger-card">
+                                    <h3>Build Your Own Catering Menu</h3>
+                                    <div class="card-bottom">
+                                        <div class="card-divider light"></div>
+                                        <a href="#" class="card-link light card-link-anim">
+                                            <span class="hover-text">Explore</span>
+                                            <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="pack-card has-bg agriculture-bg hover-trigger-card">
+                                    <h3>Dietary & Custom Options</h3>
+                                    <div class="card-bottom">
+                                        <div class="card-divider light"></div>
+                                        <a href="#" class="card-link light card-link-anim">
+                                            <span class="hover-text">Explore</span>
+                                            <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="pack-card custom-bg hover-trigger-card">
+                                    <h3>Looking for something specific?</h3>
+                                    <p>We can customise your menu to fit your needs</p>
+                                    <div class="card-bottom">
+                                        <div class="card-divider"></div>
+                                        <a href="#" class="card-link card-link-anim">
+                                            <span class="hover-text">Explore</span>
+                                            <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link nav-active">
+                            <span class="roll-text">
+                                <span class="text-upper">Our Story</span>
+                                <span class="text-lower">Our Story</span>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="roll-text">
+                                <span class="text-upper">Gallery</span>
+                                <span class="text-lower">Gallery</span>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="roll-text">
+                                <span class="text-upper">Contact Us</span>
+                                <span class="text-lower">Contact Us</span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="header-utils">
+                <a href="#" class="cta-btn cta-secondary btn-slide-hover">
+                    <div class="roll-text">
+                        <span class="text-upper">Reserve Table</span>
+                        <span class="text-lower">Reserve Table</span>
+                    </div>
+                </a>
+                <a href="#" class="cta-btn cta-primary btn-slide-hover">
+                    <div class="roll-text">
+                        <span class="text-upper">Order Online</span>
+                        <span class="text-lower">Order Online</span>
+                    </div>
+                </a>
+                <button class="icon-btn cart-btn btn-slide-hover" aria-label="Cart">
+                    <div class="roll-icon">
+                        <span class="icon-upper">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </span>
+                        <span class="icon-lower">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- ======================== END HEADER ======================== -->
+
+    <div class="dummy-main">
+    <main id="about-main">
+
+        <!-- ===================================================
+             SECTION 1: HERO — Massive brand letters + center image
+             =================================================== -->
+        <section class="about-hero">
+            <div class="about-hero-row">
+                <!-- Left: VEGN -->
+                <div class="about-hero-letters">
+                    <span>V</span><span class="accent-orange">E</span><span>G</span><span class="accent-green">N</span>
+                </div>
+
+                <!-- Center: Restaurant image -->
+                <div class="about-hero-image-wrap">
+                    <div class="about-hero-image-inner">
+                        <img src="../Assets/resttruant.png" alt="Veg n Chaat Restaurant Interior">
+                    </div>
+                </div>
+
+                <!-- Right: CHAAT -->
+                <div class="about-hero-letters">
+                    <span class="accent-orange">C</span><span>H</span><span class="accent-green">A</span><span>AT</span>
+                </div>
+            </div>
+
+            <!-- Caption -->
+            <div class="about-hero-caption">
+                <p>Vegn Chaat: a sensation, a celebration, a magic of taste</p>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             SECTION 2: GALLERY STRIP — Three restaurant photos
+             =================================================== -->
+        <div class="about-gallery">
+            <div class="about-gallery-item">
+                <img src="../Assets/resttruant2.jpg" alt="Restaurant Ambiance">
+            </div>
+            <div class="about-gallery-item">
+                <img src="../Assets/resttruant3.jpg" alt="Dining Area">
+            </div>
+            <div class="about-gallery-item">
+                <img src="../Assets/resttruant4.jpg" alt="Restaurant Interior">
+            </div>
+        </div>
+
+        <!-- ===================================================
+             SECTION 3: NARRATIVE — Our story, two-column
+             =================================================== -->
+        <section class="about-narrative">
+            <div class="about-narrative-inner">
+                <div class="about-narrative-content">
+                    <p class="about-narrative-label">Our Story</p>
+                    <h2 class="about-narrative-title">A fine gastronomic<br>break</h2>
+                    <div class="about-narrative-body">
+                        <p>Born from a deep love for authentic Indian street food, Vegn Chaat is where tradition meets creativity. Every dish tells a story — of spices passed down through generations, of streets alive with flavor, of moments that linger long after the last bite.</p>
+                        <p>We welcome you in a remarkable setting that will transport you, for the duration of a meal, into the vibrant heart of India's most beloved culinary culture.</p>
+                    </div>
+                    <a href="menu.html" class="about-btn-arrow">
+                        <span>→</span>
+                        <span>Discover the menu</span>
+                    </a>
+                </div>
+                <div class="about-narrative-image">
+                    <img src="../Assets/dishes.jpg" alt="Signature Dishes">
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             SECTION 4: FULL-WIDTH IMAGE — Parallax food close-up
+             =================================================== -->
+        <div class="about-fullwidth">
+            <div class="about-fullwidth-inner">
+                <img src="../Assets/dahi bhala.jpg" alt="Dahi Bhalla — Our Signature Dish">
+            </div>
+        </div>
+
+        <!-- ===================================================
+             SECTION 5: DARK — Atmosphere + description + address
+             =================================================== -->
+        <section class="about-dark">
+            <div class="about-dark-inner">
+                <div class="about-dark-left">
+                    <p class="about-dark-word">tradition</p>
+
+                    <div class="about-dark-address">
+                        <p class="addr-label">Address</p>
+                        <p>123 Street Food Lane<br>Chandni Chowk, Delhi 110006</p>
+
+                        <p class="addr-label">Hours</p>
+                        <p>Open daily:<br>12:00 – 15:00 and 18:30 – 22:30</p>
+
+                        <p class="addr-label">Note</p>
+                        <p style="font-size:12px; opacity:0.5;">Reservations recommended for weekend evenings</p>
+                    </div>
+                </div>
+                <div class="about-dark-right">
+                    <h2 class="about-dark-title">Design lovers</h2>
+                    <p class="about-dark-body">Vegn Chaat welcomes you to its thoughtfully designed space — a fusion of rustic warmth and contemporary elegance, where every corner is a tribute to the rich textures of Indian culture.<br><br>A gastronomy of emotions where the combination of flavors takes on its full meaning.</p>
+                    <a href="#" class="about-btn-light">
+                        <span>→</span>
+                        <span>Reserve a table</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             SECTION 6: SPACES — Two staggered columns
+             =================================================== -->
+        <section class="about-spaces">
+            <div class="about-spaces-header">
+                <p class="about-spaces-subtitle">Our Spaces</p>
+                <h2 class="about-spaces-title">Each area of the restaurant has<br>its own style and signature</h2>
+            </div>
+            <div class="about-spaces-grid">
+                <div class="about-spaces-col">
+                    <p class="about-spaces-desc">The ground floor is more conducive to lively social gatherings, with its bright, open atmosphere and warm, earthy tones.</p>
+                    <div class="about-spaces-image">
+                        <img src="../Assets/store.png" alt="Ground Floor Dining">
+                    </div>
+                </div>
+                <div class="about-spaces-col">
+                    <p class="about-spaces-desc">The mezzanine level is cosier and more intimate, with a private lounge ideal for family celebrations and special occasions.</p>
+                    <div class="about-spaces-image">
+                        <img src="../Assets/store2.png" alt="Mezzanine Lounge">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             SECTION 7: MARQUEE — Infinite scrolling CTA
+             =================================================== -->
+        <div class="about-marquee">
+            <div class="about-marquee-track">
+                <span class="about-marquee-item"><span class="arrow">→</span> Reserve a Table</span>
+                <span class="about-marquee-item"><span class="arrow">→</span> Reserve a Table</span>
+                <span class="about-marquee-item"><span class="arrow">→</span> Reserve a Table</span>
+                <span class="about-marquee-item"><span class="arrow">→</span> Reserve a Table</span>
+                <span class="about-marquee-item"><span class="arrow">→</span> Reserve a Table</span>
+                <span class="about-marquee-item"><span class="arrow">→</span> Reserve a Table</span>
+                <span class="about-marquee-item"><span class="arrow">→</span> Reserve a Table</span>
+                <span class="about-marquee-item"><span class="arrow">→</span> Reserve a Table</span>
+            </div>
+        </div>
+
+        <!-- ===================================================
+             SECTION 8: VISIT — Large word + contact info
+             =================================================== -->
+        <section class="about-visit">
+            <div class="about-visit-inner">
+                <div class="about-visit-left">
+                    <p class="about-visit-word">Visit</p>
+                    <div class="about-visit-address">
+                        <p class="v-label">Address</p>
+                        <p>123 Street Food Lane<br>Chandni Chowk, Delhi 110006</p>
+
+                        <p class="v-label">Hours</p>
+                        <p>Mon – Fri: 12:00 – 22:30<br>Sat – Sun: 11:00 – 23:00</p>
+
+                        <p class="v-label">Follow Us</p>
+                        <div class="about-visit-socials">
+                            <a href="#" class="about-visit-social-link">Instagram</a>
+                            <a href="#" class="about-visit-social-link">Facebook</a>
+                            <a href="#" class="about-visit-social-link">TikTok</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visit-right">
+                    <div class="about-visit-image">
+                        <img src="../Assets/store1.jpeg" alt="Restaurant Exterior">
+                    </div>
+                    <div class="about-visit-contact">
+                        <div class="about-visit-contact-item">
+                            <p class="vc-label">Phone</p>
+                            <a href="tel:+911234567890">+91 12345 67890</a>
+                        </div>
+                        <div class="about-visit-contact-item">
+                            <p class="vc-label">Email</p>
+                            <a href="mailto:hello@vegnchaat.com">hello@vegnchaat.com</a>
+                        </div>
+                        <div class="about-visit-contact-item">
+                            <p class="vc-label">Reservations</p>
+                            <a href="#">Book online</a>
+                        </div>
+                        <div class="about-visit-contact-item">
+                            <p class="vc-label">Catering</p>
+                            <a href="#">Enquire now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    </div><!-- /.dummy-main -->
+
+    <!-- ======================== FOOTER ======================== -->
+    <div class="footer-wrapper">
+        <footer class="footer">
+            <div class="f-header">
+                <h4 class="f-title">Experience Authentic Indian Street Food.</h4>
+                <button class="btn-back" aria-label="Back to top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 4L12 20M12 4L6 10M12 4L18 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="f-content">
+                <a href="index.html" class="f-content-col">
+                    <img src="../Assets/logo.png" alt="Vegn Chaat Logo" class="f-logo">
+                </a>
+                <div class="f-content-col">
+                    <div class="f-solution">
+                        <a href="menu.html" class="f-solution-link" aria-label="Authentic Dishes"></a>
+                        <figure class="media-wrapper image-wrapper responsive loading"><span class="media-inner image-inner"><img class="media image lazy" alt="Authentic Dishes" src="../Assets/dishes.jpg" /></span></figure>
+                        <h5 class="f-solution-title">Online Order</h5>
+                    </div>
+                </div>
+                <div class="f-content-col">
+                    <div class="f-solution">
+                        <a href="#" class="f-solution-link" aria-label="Catering Options"></a>
+                        <figure class="media-wrapper image-wrapper responsive loading"><span class="media-inner image-inner"><img class="media image lazy" alt="Catering Options" src="../Assets/dahi bhala.jpg" /></span></figure>
+                        <h5 class="f-solution-title">Catering Services</h5>
+                    </div>
+                </div>
+                <div class="f-content-col">
+                    <div class="f-solution">
+                        <a href="#" class="f-solution-link" aria-label="Restaurant Reservations"></a>
+                        <figure class="media-wrapper image-wrapper responsive loading"><span class="media-inner image-inner"><img class="media image lazy" alt="Restaurant Reservations" src="../Assets/pani puri.jpg" /></span></figure>
+                        <h5 class="f-solution-title">Reserve a Table</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="f-footer">
+                <div class="f-copyright">
+                    <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.1647 21.5651H18.816C19.0498 21.5651 19.2219 21.4851 19.3323 21.3251C19.4428 21.1651 19.498 20.9682 19.498 20.7344V18.5701H17.9853V20.0524H13.9957V13.0778H17.9853V14.5804H19.498V12.4161C19.498 12.1821 19.4428 11.9818 19.3323 11.8151C19.2219 11.6484 19.0498 11.5651 18.816 11.5651H13.1647C12.9309 11.5651 12.7588 11.6485 12.6483 11.8154C12.5379 11.9823 12.4827 12.1827 12.4827 12.4164V20.7344C12.4827 20.9682 12.5379 21.1651 12.6483 21.3251C12.7588 21.4851 12.9309 21.5651 13.1647 21.5651ZM16.003 29.2318C14.2648 29.2318 12.627 28.8993 11.0897 28.2344C9.55232 27.5696 8.20798 26.6617 7.05665 25.5108C5.90532 24.3599 4.99698 23.0161 4.33165 21.4794C3.66654 19.943 3.33398 18.3057 3.33398 16.5674C3.33398 14.8154 3.66643 13.1687 4.33132 11.6271C4.99621 10.0855 5.9041 8.74466 7.05498 7.60444C8.20587 6.46422 9.54965 5.56144 11.0863 4.8961C12.6228 4.23099 14.2601 3.89844 15.9983 3.89844C17.7503 3.89844 19.3971 4.23088 20.9387 4.89577C22.4802 5.56066 23.8211 6.46299 24.9613 7.60277C26.1015 8.74255 27.0043 10.0829 27.6697 11.6238C28.3348 13.1647 28.6673 14.811 28.6673 16.5628C28.6673 18.301 28.3349 19.9388 27.67 21.4761C27.0051 23.0134 26.1028 24.3578 24.963 25.5091C23.8232 26.6604 22.4829 27.5688 20.942 28.2341C19.4011 28.8992 17.7548 29.2318 16.003 29.2318ZM16.0007 27.7188C19.1049 27.7188 21.7399 26.6325 23.9057 24.4601C26.0714 22.2874 27.1543 19.6558 27.1543 16.5651C27.1543 13.4609 26.0714 10.8259 23.9057 8.6601C21.7399 6.49433 19.1049 5.41144 16.0007 5.41144C12.91 5.41144 10.2783 6.49433 8.10565 8.6601C5.93321 10.8259 4.84698 13.4609 4.84698 16.5651C4.84698 19.6558 5.93321 22.2874 8.10565 24.4601C10.2783 26.6325 12.91 27.7188 16.0007 27.7188Z" fill="var(--text-color)" />
+                    </svg>
+                    <span class="f-copyright-text">Veg N Chaat 2026. All Rights Reserved</span>
+                </div>
+                <div class="f-socials">
+                    <a href="#" class="f-social" target="_blank">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 1.47412C17.8605 1.47412 22.6113 6.22497 22.6113 12.0855C22.6113 17.3819 18.7309 21.7718 13.658 22.5679V15.1528H16.1305L16.601 12.0855H13.658V10.0949C13.658 9.25577 14.0691 8.43781 15.3873 8.43781H16.7254V5.82642C16.7254 5.82642 15.511 5.61917 14.35 5.61917C11.9262 5.61917 10.342 7.08818 10.342 9.74764V12.0855H7.6477V15.1528H10.342V22.5679C5.26908 21.7718 1.38867 17.3819 1.38867 12.0855C1.38867 6.22497 6.13952 1.47412 12 1.47412Z" fill="var(--text-color)" /></svg>
+                    </a>
+                    <a href="#" class="f-social" target="_blank">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.94511 12C6.94511 9.20824 9.20824 6.9451 12 6.9451C14.7918 6.9451 17.0549 9.20824 17.0549 12C17.0549 14.7918 14.7918 17.0549 12 17.0549C9.20824 17.0549 6.94511 14.7918 6.94511 12ZM12 15.2812C10.1878 15.2812 8.71875 13.8122 8.71875 12C8.71875 10.1878 10.1878 8.71875 12 8.71875C13.8122 8.71875 15.2812 10.1878 15.2812 12C15.2812 13.8122 13.8122 15.2812 12 15.2812Z" fill="var(--text-color)" /><path d="M17.2546 7.92663C17.907 7.92663 18.4359 7.39779 18.4359 6.74539C18.4359 6.093 17.907 5.56412 17.2546 5.56412C16.6023 5.56412 16.0734 6.093 16.0734 6.74539C16.0734 7.39779 16.6023 7.92663 17.2546 7.92663Z" fill="var(--text-color)" /><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.15625C9.3266 2.15625 8.99137 2.16758 7.94143 2.21549C6.89368 2.26328 6.1781 2.4297 5.55197 2.67305C4.90466 2.92458 4.35569 3.26117 3.80841 3.80841C3.26117 4.35569 2.92458 4.90466 2.67305 5.55197C2.4297 6.1781 2.26328 6.89368 2.21549 7.94143C2.16758 8.99137 2.15625 9.3266 2.15625 12C2.15625 14.6734 2.16758 15.0086 2.21549 16.0586C2.26328 17.1063 2.4297 17.8219 2.67305 18.448C2.92458 19.0953 3.26117 19.6443 3.80841 20.1916C4.35569 20.7388 4.90466 21.0754 5.55197 21.327C6.1781 21.5703 6.89368 21.7367 7.94143 21.7845C8.99137 21.8324 9.3266 21.8438 12 21.8438C14.6734 21.8438 15.0086 21.8324 16.0586 21.7845C17.1063 21.7367 17.8219 21.5703 18.448 21.327C19.0953 21.0754 19.6443 20.7388 20.1916 20.1916C20.7388 19.6443 21.0754 19.0953 21.327 18.448C21.5703 17.8219 21.7367 17.1063 21.7845 16.0586C21.8324 15.0086 21.8438 14.6734 21.8438 12C21.8438 9.3266 21.8324 8.99137 21.7845 7.94143C21.7367 6.89368 21.5703 6.1781 21.327 5.55197C21.0754 4.90466 20.7388 4.35569 20.1916 3.80841C19.6443 3.26117 19.0953 2.92458 18.448 2.67305C17.8219 2.4297 17.1063 2.26328 16.0586 2.21549C15.0086 2.16758 14.6734 2.15625 12 2.15625Z" fill="var(--text-color)" /></svg>
+                    </a>
+                </div>
+                <div class="f-links">
+                    <a href="#" class="f-link">Contact Us</a>
+                    <a href="#" class="f-link">Privacy Policy</a>
+                    <a href="#" class="f-link">Terms & Conditions</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- ======================== END FOOTER ======================== -->
+
+    <!-- Libraries -->
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Global site script (header, footer animations, lenis) -->
+    <script src="script.js"></script>
+    <!-- Page-specific animations -->
+    <script src="about.js"></script>
+</body>
+
+</html>
