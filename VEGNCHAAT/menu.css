@@ -1,13 +1,12 @@
 /* Menu CSS - Improved Design with Hero and Floating Nav */
 
 :root {
-    --lpq-bg: #fdfcf9;
-    --lpq-text: #2d2d2d;
-    --vnc-orange: #f26522;
-    --vnc-green: #00a651;
+    --lpq-bg: #FAF8F5; /* Warm creamy parchment */
+    --lpq-text: #2c2a29; /* Dark charcoal, not pure black */
+    --lpq-accent: #6b6356; /* Muted earthy accent */
     --font-serif: 'Cormorant Garamond', serif;
     --font-sans: 'Montserrat', sans-serif;
-    --section-spacing: 80px;
+    --section-spacing: 120px; /* More breathable spacing */
     --header-height: 65px;
 }
 
@@ -20,8 +19,9 @@
 body {
     background-color: var(--lpq-bg);
     color: var(--lpq-text);
-    font-family: var(--font-serif);
-    line-height: 1.6;
+    font-family: var(--font-sans); /* Body text should be clean sans-serif */
+    font-weight: 300;
+    line-height: 1.8; /* Elegant line height */
     -webkit-font-smoothing: antialiased;
     padding-top: var(--header-height);
 }
@@ -81,11 +81,12 @@ body {
 }
 
 .hero-title {
-    font-family: var(--font-sans);
-    font-size: clamp(32px, 5vw, 56px);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(40px, 6vw, 72px);
     font-weight: 300;
-    line-height: 1.2;
-    letter-spacing: -1px;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
 }
 
 /* Top Category Nav (becomes secondary on mobile) */
@@ -112,19 +113,24 @@ body {
 
 .category-link {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 15px 20px;
     text-decoration: none;
-    color: #666;
+    color: var(--lpq-accent);
     font-family: var(--font-sans);
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 14px;
+    font-weight: 400;
     transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.category-link:hover {
+    color: var(--lpq-text);
 }
 
 .category-link.active {
-    color: var(--vnc-orange);
+    color: var(--lpq-text);
+    font-weight: 500;
+    border-bottom: 2px solid var(--lpq-text);
 }
 
 /* Menu Layout */
@@ -136,13 +142,13 @@ body {
 
 .menu-header {
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 20px 40px;
 }
 
 .menu-header p {
-    font-size: 24px;
-    font-style: italic;
-    color: #888;
+    font-size: 20px;
+    color: var(--lpq-accent);
+    font-weight: 300;
 }
 
 .menu-section {
@@ -152,29 +158,18 @@ body {
 }
 
 .section-title {
-    margin-bottom: 50px;
+    margin-bottom: 60px;
     text-align: center;
 }
 
 .section-title h2 {
-    font-size: 32px;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 4px;
+    font-family: var(--font-serif);
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--lpq-text);
     position: relative;
     display: inline-block;
     padding-bottom: 15px;
-}
-
-.section-title h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 2px;
-    background: var(--vnc-orange);
 }
 
 .menu-grid {
@@ -195,48 +190,50 @@ body {
 .item-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 8px;
+    align-items: baseline;
+    margin-bottom: 12px;
 }
 
 .item-title {
-    font-family: var(--font-sans);
-    font-size: 16px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #222;
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--lpq-text);
 }
 
 .item-price {
     font-family: var(--font-sans);
-    font-weight: 600;
-    color: var(--vnc-orange);
+    font-weight: 400;
+    color: var(--lpq-text);
+    font-size: 18px;
 }
 
 .item-description {
-    font-size: 17px;
-    color: #555;
-    margin-bottom: 12px;
-    font-weight: 400;
+    font-size: 15px;
+    color: var(--lpq-accent);
+    margin-bottom: 16px;
+    font-weight: 300;
+    line-height: 1.6;
 }
 
 .item-tags {
     display: flex;
-    gap: 8px;
+    gap: 10px;
 }
 
 .tag {
     font-family: var(--font-sans);
-    font-size: 9px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 20px;
-    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 400;
+    padding: 4px 12px;
+    border-radius: 4px;
     letter-spacing: 0.5px;
+    border: 1px solid currentColor;
 }
 
-.tag-vegan { background: #f1f8e9; color: #33691e; }
-.tag-jain { background: #fff3e0; color: #e65100; }
-.tag-nutfree { background: #e3f2fd; color: #0d47a1; }
+.tag-vegan { color: #6e7a5e; }
+.tag-jain { color: #8a6c53; }
+.tag-nutfree { color: #5a7585; }
 
 /* Featured Card */
 .featured-section {
