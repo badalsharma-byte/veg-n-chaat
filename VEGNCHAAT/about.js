@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(ScrollTrigger);
 
     // ── Sync with Lenis (if present from script.js) ──
-    // script.js initializes lenis globally; we just tick here if not already done
     if (typeof lenis !== 'undefined') {
         lenis.on('scroll', ScrollTrigger.update);
         gsap.ticker.add((time) => { lenis.raf(time * 1000); });
@@ -16,64 +15,53 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ── 1. Hero caption fade in on load ──
-    gsap.to('.about-hero-caption', {
-        opacity: 1,
-        y: 0,
-        duration: 1.2,
-        ease: 'power3.out',
-        delay: 0.6,
-    });
+    gsap.fromTo('.about-hero-caption',
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out', delay: 0.8 }
+    );
 
-    // ── 2. Hero image parallax ──
-    gsap.to('.about-hero-image-inner', {
-        y: '20%',
-        ease: 'none',
-        scrollTrigger: {
-            trigger: '.about-hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true,
-        },
-    });
+    // ── 2. Hero letter groups slide in from sides ──
+    gsap.fromTo('.about-hero-letter-group.left',
+        { x: -60, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1.4, ease: 'power3.out', delay: 0.2 }
+    );
+    gsap.fromTo('.about-hero-letter-group.right',
+        { x: 60, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1.4, ease: 'power3.out', delay: 0.2 }
+    );
 
-    // ── 3. Gallery strip: stagger reveal ──
-    gsap.from('.about-gallery-item', {
+    // ── 3. Gallery mosaic items stagger in ──
+    gsap.from('.gmosaic-item, .gmosaic-center', {
         opacity: 0,
-        y: 50,
+        y: 40,
         duration: 1,
-        stagger: 0.15,
+        stagger: 0.12,
         ease: 'power3.out',
         scrollTrigger: {
-            trigger: '.about-gallery',
+            trigger: '.about-gallery-mosaic',
             start: 'top 85%',
         },
     });
 
-    // ── 4. Narrative section ──
-    gsap.from('.about-narrative-label', {
-        opacity: 0, y: 20, duration: 0.8, ease: 'power3.out',
-        scrollTrigger: { trigger: '.about-narrative-label', start: 'top 85%' },
+    // ── 4. Narrative: reveal elements ──
+    document.querySelectorAll('.about-reveal').forEach(el => {
+        gsap.fromTo(el,
+            { opacity: 0, y: 30 },
+            {
+                opacity: 1, y: 0,
+                duration: 0.9,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 88%',
+                },
+            }
+        );
     });
 
-    // Title split by lines
-    gsap.from('.about-narrative-title', {
-        opacity: 0, y: 40, duration: 1, ease: 'power3.out',
-        scrollTrigger: { trigger: '.about-narrative-title', start: 'top 85%' },
-    });
-
-    gsap.from('.about-narrative-body', {
-        opacity: 0, y: 30, duration: 0.9, ease: 'power3.out', delay: 0.1,
-        scrollTrigger: { trigger: '.about-narrative-body', start: 'top 88%' },
-    });
-
-    gsap.from('.about-btn-arrow', {
-        opacity: 0, y: 20, duration: 0.8, ease: 'power3.out',
-        scrollTrigger: { trigger: '.about-btn-arrow', start: 'top 90%' },
-    });
-
-    // Narrative image parallax
-    gsap.to('.about-narrative-image img', {
-        y: '-10%',
+    // ── 5. Narrative sticky image parallax ──
+    gsap.to('.about-narrative-img-col img', {
+        y: '-8%',
         ease: 'none',
         scrollTrigger: {
             trigger: '.about-narrative',
@@ -83,123 +71,74 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
 
-    // ── 5. Full-width parallax ──
-    gsap.to('.about-fullwidth-inner', {
-        y: '20%',
-        ease: 'none',
-        scrollTrigger: {
-            trigger: '.about-fullwidth',
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true,
-        },
-    });
+    // ── 6. Expanding image section ──
+    // Text fades in first
+    gsap.fromTo('.about-expand-text',
+        { opacity: 0, y: 40 },
+        {
+            opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+            scrollTrigger: { trigger: '.about-expand-text', start: 'top 80%' },
+        }
+    );
 
-    // ── 6. Dark section character reveal ──
-    const darkWord = document.querySelector('.about-dark-word');
-    if (darkWord) {
-        // Split into characters
-        const text = darkWord.textContent.trim();
-        darkWord.innerHTML = '';
-        text.split('').forEach(ch => {
-            const span = document.createElement('span');
-            span.className = 'char';
-            span.textContent = ch === ' ' ? '\u00A0' : ch;
-            darkWord.appendChild(span);
-        });
-
-        gsap.to('.about-dark-word .char', {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            stagger: 0.04,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: '.about-dark',
-                start: 'top 70%',
-            },
-        });
-    }
-
-    // Dark section title + body
-    gsap.from('.about-dark-title', {
-        opacity: 0, y: 40, duration: 1, ease: 'power3.out',
-        scrollTrigger: { trigger: '.about-dark-title', start: 'top 80%' },
-    });
-
-    gsap.from('.about-dark-body', {
-        opacity: 0, y: 30, duration: 0.9, ease: 'power3.out', delay: 0.1,
-        scrollTrigger: { trigger: '.about-dark-body', start: 'top 85%' },
-    });
-
-    gsap.from('.about-btn-light', {
-        opacity: 0, y: 20, duration: 0.8, ease: 'power3.out',
-        scrollTrigger: { trigger: '.about-btn-light', start: 'top 90%' },
-    });
-
-    gsap.from('.about-dark-address', {
-        opacity: 0, y: 20, duration: 0.8, ease: 'power3.out',
-        scrollTrigger: { trigger: '.about-dark-address', start: 'top 90%' },
-    });
-
-    // ── 7. Spaces section ──
-    gsap.from('.about-spaces-header', {
-        opacity: 0, y: 40, duration: 1, ease: 'power3.out',
-        scrollTrigger: { trigger: '.about-spaces-header', start: 'top 80%' },
-    });
-
-    gsap.from('.about-spaces-col', {
-        opacity: 0, y: 60, duration: 1.2, ease: 'power3.out',
-        stagger: 0.2,
-        scrollTrigger: { trigger: '.about-spaces-grid', start: 'top 80%' },
-    });
-
-    // ── 8. Marquee infinite scroll ──
-    const marqueeTrack = document.querySelector('.about-marquee-track');
-    if (marqueeTrack) {
-        // Clone items to fill space
-        const items = marqueeTrack.innerHTML;
-        marqueeTrack.innerHTML = items + items + items;
-
-        const totalWidth = marqueeTrack.scrollWidth / 3;
-
-        gsap.to(marqueeTrack, {
-            x: -totalWidth,
-            duration: 30,
+    // Image expands from padded (narrow) to full width as user scrolls
+    gsap.fromTo('.about-expand-image-wrap',
+        { paddingLeft: '8%', paddingRight: '8%' },
+        {
+            paddingLeft: '0%',
+            paddingRight: '0%',
             ease: 'none',
-            repeat: -1,
-            modifiers: {
-                x: gsap.utils.unitize(x => parseFloat(x) % totalWidth),
+            scrollTrigger: {
+                trigger: '.about-expand-section',
+                start: 'top 60%',
+                end: 'bottom 40%',
+                scrub: 1,
             },
-        });
-    }
+        }
+    );
 
-    // ── 9. Visit section ──
-    gsap.from('.about-visit-word', {
-        opacity: 0, x: -60, duration: 1.2, ease: 'power3.out',
-        scrollTrigger: { trigger: '.about-visit-word', start: 'top 80%' },
+    // Subtle counter-zoom on expanding image for parallax feel
+    gsap.fromTo('.about-expand-image-inner img',
+        { scale: 1.15 },
+        {
+            scale: 1,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.about-expand-section',
+                start: 'top 60%',
+                end: 'bottom 40%',
+                scrub: 1,
+            },
+        }
+    );
+
+    // ── 7. Dark section — Design Lovers ──
+    gsap.from('.about-dl-image', {
+        opacity: 0,
+        x: -60,
+        duration: 1.2,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: '.about-design-lovers', start: 'top 75%' },
     });
 
-    gsap.from('.about-visit-address', {
-        opacity: 0, y: 30, duration: 0.9, ease: 'power3.out',
-        scrollTrigger: { trigger: '.about-visit-address', start: 'top 85%' },
-    });
-
-    gsap.from('.about-visit-image', {
-        opacity: 0, y: 50, duration: 1.1, ease: 'power3.out',
-        scrollTrigger: { trigger: '.about-visit-image', start: 'top 85%' },
-    });
-
-    gsap.from('.about-visit-contact-item', {
-        opacity: 0, y: 20, duration: 0.8, ease: 'power3.out',
-        stagger: 0.1,
-        scrollTrigger: { trigger: '.about-visit-contact', start: 'top 85%' },
-    });
-
-    gsap.from('.about-visit-social-link', {
-        opacity: 0, y: 15, duration: 0.7, ease: 'power3.out',
-        stagger: 0.1,
-        scrollTrigger: { trigger: '.about-visit-socials', start: 'top 90%' },
+    // ── 8. Four images row — alternating left/right slide-in ──
+    const fourImgs = document.querySelectorAll('.about-four-img');
+    fourImgs.forEach((img, i) => {
+        const fromX = i % 2 === 0 ? -50 : 50;
+        gsap.fromTo(img,
+            { opacity: 0, x: fromX },
+            {
+                opacity: 1, x: 0,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.about-four-row',
+                    start: 'top 80%',
+                    toggleActions: 'play none none none',
+                },
+                delay: i * 0.12,
+            }
+        );
     });
 
 });

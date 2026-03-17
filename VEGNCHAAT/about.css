@@ -1,604 +1,518 @@
 /* ===================================================
-   about.css — Our Story Page (Onyx-inspired design)
+   about.css — Our Story Page
    =================================================== */
 
-/* ── Body override for about page ── */
 body.about-page {
-    background-color: #fff;
+    background: #fff;
     overflow-x: hidden;
     padding-top: var(--header-height, 65px);
-}
-
-/* ── Shared utilities ── */
-.about-clip-hidden {
-    overflow: hidden;
-}
-
-.about-fade-line {
-    overflow: hidden;
+    padding-bottom: 55px; /* room for sticky CTA bar */
 }
 
 /* ===================================================
    SECTION 1 — HERO
+   Letters use mix-blend-mode:difference for dynamic
+   inverted color effect. No gap between letters + image.
    =================================================== */
 .about-hero {
     min-height: calc(100vh - var(--header-height, 65px));
-    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
     background: #fff;
-    padding: 0;
     overflow: hidden;
+    isolation: isolate; /* Required for blend mode */
+    position: relative;
 }
 
 .about-hero-row {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 1;
     width: 100%;
-    position: relative;
+    overflow: hidden;
 }
 
-.about-hero-letters {
+/* Letter groups — white + difference = appears dark on white bg,
+   light on dark image — creates the dynamic inverted effect */
+.about-hero-letter-group {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(80px, 15vw, 240px);
+    font-size: clamp(90px, 16vw, 260px);
     font-weight: 100;
     line-height: 0.85;
-    color: #1d1d1b;
-    flex: 1;
-    text-align: center;
+    letter-spacing: -0.04em;
+    color: #fff;
+    mix-blend-mode: difference;
+    z-index: 2;
+    position: relative;
+    pointer-events: none;
     user-select: none;
-    letter-spacing: -0.02em;
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
-.about-hero-letters span.accent-orange {
-    color: #f26522;
+.about-hero-letter-group.left {
+    text-align: right;
+    padding-right: 0;
 }
 
-.about-hero-letters span.accent-green {
-    color: #00a651;
+.about-hero-letter-group.right {
+    text-align: left;
+    padding-left: 0;
 }
 
-.about-hero-image-wrap {
-    width: 27vw;
+.about-hero-image-col {
+    width: 28vw;
+    min-width: 180px;
     max-width: 400px;
-    min-width: 200px;
-    height: 60vh;
+    height: 64vh;
+    flex-shrink: 0;
     overflow: hidden;
     position: relative;
-    z-index: 2;
-    margin: 0 -1vw;
-    flex-shrink: 0;
+    z-index: 1;
+    margin: 0 -1vw; /* Pull letters closer — no gap */
 }
 
-.about-hero-image-inner {
-    width: 100%;
-    height: 120%;
-    position: relative;
-    top: -10%;
-    will-change: transform;
-}
-
-.about-hero-image-inner img {
+.about-hero-image-col img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
+/* Caption overlays the bottom of the hero, on top of image */
 .about-hero-caption {
-    margin-top: 3rem;
+    position: relative;
+    z-index: 3;
     text-align: center;
-    padding: 0 2rem;
-    opacity: 0;
-    transform: translateY(20px);
+    padding: 1.5rem 2rem 2.5rem;
+    background: #fff;
 }
 
 .about-hero-caption p {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.1rem, 2.2vw, 1.8rem);
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
     font-weight: 300;
     font-style: italic;
     color: #1d1d1b;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 /* ===================================================
-   SECTION 2 — GALLERY STRIP (3 images)
+   SECTION 2 — GALLERY MOSAIC (5 images)
+   2 stacked left | tall center | 2 stacked right
    =================================================== */
-.about-gallery {
+.about-gallery-mosaic {
+    display: flex;
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    height: 80vh;
     border-top: 1px solid #e0e0e0;
-    border-bottom: 1px solid #e0e0e0;
 }
 
-.about-gallery-item {
-    position: relative;
-    aspect-ratio: 3/4;
+.gmosaic-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.gmosaic-item {
+    flex: 1;
     overflow: hidden;
-    border-right: 1px solid #e0e0e0;
+    position: relative;
 }
 
-.about-gallery-item:last-child {
-    border-right: none;
-}
-
-.about-gallery-item img {
+.gmosaic-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform;
 }
 
-.about-gallery-item:hover img {
+.gmosaic-item:hover img {
+    transform: scale(1.04);
+}
+
+.gmosaic-item + .gmosaic-item {
+    border-top: 1px solid #e0e0e0;
+}
+
+.gmosaic-left .gmosaic-item {
+    border-right: 1px solid #e0e0e0;
+}
+
+.gmosaic-right .gmosaic-item {
+    border-left: 1px solid #e0e0e0;
+}
+
+.gmosaic-center {
+    width: 30vw;
+    min-width: 200px;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.gmosaic-center img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.gmosaic-center:hover img {
     transform: scale(1.04);
 }
 
 /* ===================================================
    SECTION 3 — NARRATIVE
+   Left: text + button + landscape image
+   Right: tall sticky portrait image
    =================================================== */
 .about-narrative {
-    padding: 10rem 5vw;
+    display: grid;
+    grid-template-columns: 1fr 45%;
+    min-height: 100vh;
     background: #fff;
 }
 
-.about-narrative-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: start;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
 .about-narrative-content {
-    padding-right: 3rem;
+    padding: 8rem 5vw 8rem 5vw;
+    display: flex;
+    flex-direction: column;
 }
 
 .about-narrative-label {
     font-family: 'Montserrat', sans-serif;
     font-size: 11px;
-    font-weight: 500;
-    text-transform: uppercase;
+    font-weight: 600;
     letter-spacing: 3px;
-    color: #888;
+    text-transform: uppercase;
+    color: #999;
     margin-bottom: 2rem;
 }
 
 .about-narrative-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 4.5vw, 5rem);
+    font-size: clamp(2.2rem, 4vw, 4.5rem);
     font-weight: 300;
     line-height: 1.1;
     letter-spacing: -0.02em;
-    margin-bottom: 2.5rem;
     color: #1d1d1b;
+    margin-bottom: 2rem;
 }
 
 .about-narrative-body {
     font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 300;
-    color: #555;
-    line-height: 1.8;
-    margin-bottom: 3rem;
-}
-
-.about-narrative-body p + p {
-    margin-top: 1rem;
+    color: #666;
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
 }
 
 .about-btn-arrow {
     display: inline-flex;
     align-items: center;
-    gap: 1rem;
+    gap: 12px;
     text-decoration: none;
     color: #1d1d1b;
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    letter-spacing: 0.5px;
     border: 1px solid #1d1d1b;
-    padding: 14px 28px;
-    transition: all 0.3s ease;
+    padding: 14px 24px;
+    transition: all 0.3s;
+    align-self: flex-start;
 }
 
 .about-btn-arrow:hover {
-    background-color: #1d1d1b;
+    background: #1d1d1b;
     color: #fff;
 }
 
-.about-narrative-image {
+/* Landscape image below the button */
+.about-narrative-landscape {
+    margin-top: 2.5rem;
     width: 100%;
-    aspect-ratio: 4/5;
+    aspect-ratio: 16/9;
     overflow: hidden;
-    position: relative;
-    will-change: transform;
+    max-width: 520px;
 }
 
-.about-narrative-image img {
+.about-narrative-landscape img {
     width: 100%;
-    height: 110%;
+    height: 100%;
     object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    will-change: transform;
+    transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* ===================================================
-   SECTION 4 — FULL-WIDTH IMAGE (parallax)
-   =================================================== */
-.about-fullwidth {
-    width: 100%;
-    height: 80vh;
+.about-narrative-landscape:hover img {
+    transform: scale(1.04);
+}
+
+/* Sticky portrait image on the right */
+.about-narrative-img-col {
+    position: sticky;
+    top: var(--header-height, 65px);
+    height: calc(100vh - var(--header-height, 65px));
     overflow: hidden;
-    position: relative;
+    flex-shrink: 0;
 }
 
-.about-fullwidth-inner {
-    width: 100%;
-    height: 130%;
-    position: relative;
-    top: -15%;
-    will-change: transform;
-}
-
-.about-fullwidth-inner img {
+.about-narrative-img-col img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 /* ===================================================
-   SECTION 5 — DARK SECTION
+   SECTION 4 — EXPANDING IMAGE
+   Text floats above; image starts clipped and
+   expands to full width as user scrolls.
    =================================================== */
-.about-dark {
-    background-color: #111820;
-    color: #fff;
-    padding: 8rem 5vw;
+.about-expand-section {
+    overflow: hidden;
+    background: #fff;
+    padding: 0;
     position: relative;
 }
 
-.about-dark-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-    max-width: 1400px;
+.about-expand-text {
+    text-align: center;
+    padding: 6rem 5vw 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+.about-expand-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 3vw, 2.8rem);
+    font-weight: 300;
+    font-style: italic;
+    color: #1d1d1b;
+    line-height: 1.4;
+    max-width: 700px;
     margin: 0 auto;
 }
 
-.about-dark-left {
+.about-expand-image-wrap {
+    width: 100%;
+    overflow: hidden;
+    padding: 0 8%;  /* Will animate to 0% padding on scroll */
+    will-change: padding;
+}
+
+.about-expand-image-inner {
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
     position: relative;
 }
 
-.about-dark-word {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 7vw, 9rem);
-    font-weight: 300;
-    font-style: italic;
-    color: rgba(255,255,255,0.15);
-    line-height: 1;
-    margin-bottom: 4rem;
-    letter-spacing: -0.03em;
+.about-expand-image-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform-origin: center center;
+}
+
+/* ===================================================
+   SECTION 5 — DARK: DESIGN LOVERS
+   Dark navy, image LEFT + text RIGHT
+   =================================================== */
+.about-dark-section {
+    background: #0e1720;
+    color: #fff;
+}
+
+.about-design-lovers {
+    display: grid;
+    grid-template-columns: 45% 1fr;
+    min-height: 80vh;
+    align-items: stretch;
+}
+
+.about-dl-image {
     overflow: hidden;
+    position: relative;
 }
 
-.about-dark-word .char {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(30px);
+.about-dl-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.about-dark-address {
-    margin-top: 4rem;
+.about-dl-content {
+    padding: 8rem 5vw 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.about-dark-address p {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    font-weight: 300;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.9;
-    margin: 0;
-}
-
-.about-dark-address .addr-label {
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: rgba(255,255,255,0.35);
-    margin-bottom: 0.5rem;
-    margin-top: 2rem;
-}
-
-.about-dark-right {
-    padding-top: 2rem;
-}
-
-.about-dark-title {
+.about-dl-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 3.5vw, 4rem);
+    font-size: clamp(2.5rem, 4vw, 5rem);
     font-weight: 300;
     color: #fff;
-    line-height: 1.15;
-    margin-bottom: 2rem;
+    line-height: 1.1;
     letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
 }
 
-.about-dark-body {
+.about-dl-body {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 300;
     color: rgba(255,255,255,0.65);
     line-height: 1.9;
-    margin-bottom: 2.5rem;
+    max-width: 440px;
+    margin-bottom: 2rem;
 }
 
 .about-btn-light {
     display: inline-flex;
     align-items: center;
-    gap: 1rem;
+    gap: 12px;
     text-decoration: none;
     color: #fff;
     font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    border: 1px solid rgba(255,255,255,0.3);
-    padding: 14px 28px;
-    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 14px 24px;
+    transition: all 0.3s;
+    align-self: flex-start;
+    margin-bottom: 3rem;
 }
 
 .about-btn-light:hover {
     border-color: #fff;
     background: #fff;
-    color: #111820;
+    color: #0e1720;
+}
+
+.about-dl-address p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.8;
+    margin: 0;
+}
+
+.about-dl-address .addr-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-top: 1.2rem;
+    margin-bottom: 0.3rem;
 }
 
 /* ===================================================
-   SECTION 6 — ARCHITECTURE / SPACES
+   SECTION 6 — DARK: EACH AREA
    =================================================== */
-.about-spaces {
-    padding: 10rem 5vw;
-    background: #fff;
+.about-each-area {
+    background: #0e1720;
+    padding: 6rem 5vw 4rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
 }
 
-.about-spaces-header {
-    max-width: 800px;
-    margin: 0 auto 6rem;
-    text-align: center;
-}
-
-.about-spaces-subtitle {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #888;
-    margin-bottom: 1.5rem;
-}
-
-.about-spaces-title {
+.about-each-area-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2rem, 4vw, 4.5rem);
     font-weight: 300;
+    color: #fff;
     line-height: 1.15;
     letter-spacing: -0.02em;
-    color: #1d1d1b;
+    margin-bottom: 2rem;
+    max-width: 800px;
 }
 
-.about-spaces-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.about-spaces-col:last-child {
-    margin-top: 12rem;
-}
-
-.about-spaces-desc {
+.about-each-area-body {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 300;
-    color: #555;
-    line-height: 1.8;
-    margin-bottom: 2rem;
-    max-width: 420px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.9;
+    max-width: 600px;
 }
 
-.about-spaces-image {
+/* ===================================================
+   SECTION 7 — FOUR PORTRAIT IMAGES ROW
+   =================================================== */
+.about-four-row {
+    display: flex;
     width: 100%;
-    aspect-ratio: 3/4;
+    background: #0e1720; /* Continuation of dark bg */
+    padding-top: 3rem;
+}
+
+.about-four-img {
+    flex: 1;
+    aspect-ratio: 3/5;
     overflow: hidden;
     position: relative;
 }
 
-.about-spaces-image img {
+.about-four-img + .about-four-img {
+    margin-left: 2px;
+}
+
+.about-four-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform;
+    transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.about-spaces-image:hover img {
+.about-four-img:hover img {
     transform: scale(1.04);
 }
 
 /* ===================================================
-   SECTION 7 — MARQUEE TICKER
+   STICKY CTA BAR (replaces footer)
    =================================================== */
-.about-marquee {
-    overflow: hidden;
-    border-top: 1px solid #e0e0e0;
-    border-bottom: 1px solid #e0e0e0;
-    padding: 12px 0;
-    background: #fff;
-    cursor: default;
+.about-sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    z-index: 500;
 }
 
-.about-marquee-track {
+.about-cta-btn {
     display: flex;
-    white-space: nowrap;
-    will-change: transform;
-}
-
-.about-marquee-item {
-    display: inline-flex;
     align-items: center;
-    gap: 1rem;
-    padding: 0 2rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.2rem, 2.5vw, 2rem);
-    font-weight: 300;
-    font-style: italic;
-    color: #1d1d1b;
-    flex-shrink: 0;
-}
-
-.about-marquee-item .arrow {
-    font-style: normal;
-    color: #f26522;
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-size: 1rem;
-}
-
-/* ===================================================
-   SECTION 8 — VISIT / CONTACT
-   =================================================== */
-.about-visit {
-    padding: 8rem 5vw;
-    background: #fff;
-    overflow: hidden;
-}
-
-.about-visit-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.about-visit-left {}
-
-.about-visit-word {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(4rem, 12vw, 14rem);
-    font-weight: 300;
-    color: #1d1d1b;
-    line-height: 0.85;
-    margin-bottom: 4rem;
-    letter-spacing: -0.04em;
-}
-
-.about-visit-address p {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    font-weight: 300;
-    color: #555;
-    line-height: 1.9;
-    margin: 0;
-}
-
-.about-visit-address .v-label {
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #aaa;
-    margin-bottom: 0.4rem;
-    margin-top: 1.5rem;
-}
-
-.about-visit-right {
-    padding-top: 2rem;
-    position: relative;
-}
-
-.about-visit-image {
-    width: 100%;
-    aspect-ratio: 4/3;
-    overflow: hidden;
-    margin-bottom: 4rem;
-}
-
-.about-visit-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.about-visit-contact {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-}
-
-.about-visit-contact-item {
-    border-top: 1px solid #e0e0e0;
-    padding-top: 1.5rem;
-}
-
-.about-visit-contact-item .vc-label {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #aaa;
-    margin-bottom: 0.5rem;
-}
-
-.about-visit-contact-item a,
-.about-visit-contact-item p {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    color: #1d1d1b;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(190, 100, 90, 0.92);
+    backdrop-filter: blur(10px);
+    color: #fff;
     text-decoration: none;
-    transition: opacity 0.2s;
-}
-
-.about-visit-contact-item a:hover {
-    opacity: 0.6;
-}
-
-.about-visit-socials {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.about-visit-social-link {
     font-family: 'Montserrat', sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    text-decoration: none;
-    color: #1d1d1b;
-    border-bottom: 1px solid #1d1d1b;
-    padding-bottom: 2px;
-    transition: opacity 0.2s;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    transition: background 0.3s;
 }
 
-.about-visit-social-link:hover {
-    opacity: 0.5;
+.about-cta-btn:hover {
+    background: rgba(190, 100, 90, 1);
+}
+
+.about-cta-btn:first-child {
+    border-right: 1px solid rgba(255,255,255,0.15);
 }
 
 /* ===================================================
@@ -609,76 +523,66 @@ body.about-page {
     transform: translateY(30px);
 }
 
-.about-reveal-left {
-    opacity: 0;
-    transform: translateX(-30px);
-}
-
-.about-reveal-right {
-    opacity: 0;
-    transform: translateX(30px);
-}
-
 /* ===================================================
    RESPONSIVE
    =================================================== */
 @media (max-width: 1024px) {
-    .about-narrative-inner,
-    .about-dark-inner,
-    .about-visit-inner {
+    .about-narrative {
         grid-template-columns: 1fr;
     }
 
-    .about-narrative-content {
-        padding-right: 0;
+    .about-narrative-img-col {
+        position: relative;
+        top: 0;
+        height: 60vh;
     }
 
-    .about-spaces-col:last-child {
-        margin-top: 0;
+    .about-design-lovers {
+        grid-template-columns: 1fr;
     }
 
-    .about-hero-letters {
-        font-size: clamp(50px, 12vw, 140px);
+    .about-dl-image {
+        height: 50vh;
     }
 }
 
 @media (max-width: 768px) {
-    .about-gallery {
-        grid-template-columns: 1fr;
+    .about-hero-letter-group {
+        font-size: clamp(50px, 12vw, 100px);
     }
 
-    .about-gallery-item {
-        border-right: none;
-        border-bottom: 1px solid #e0e0e0;
-        aspect-ratio: 16/9;
+    .about-hero-image-col {
+        width: 45vw;
+        height: 50vh;
     }
 
-    .about-gallery-item:last-child {
-        border-bottom: none;
+    .about-gallery-mosaic {
+        height: auto;
+        flex-direction: column;
     }
 
-    .about-spaces-grid {
-        grid-template-columns: 1fr;
+    .gmosaic-side {
+        flex-direction: row;
     }
 
-    .about-visit-contact {
-        grid-template-columns: 1fr;
+    .gmosaic-item {
+        aspect-ratio: 1;
     }
 
-    .about-narrative {
-        padding: 5rem 5vw;
+    .gmosaic-center {
+        width: 100%;
+        height: 50vw;
     }
 
-    .about-spaces {
-        padding: 5rem 5vw;
+    .about-four-row {
+        flex-wrap: wrap;
     }
 
-    .about-hero-image-wrap {
-        width: 50vw;
-        height: 45vh;
+    .about-four-img {
+        flex: 0 0 50%;
     }
 
-    .about-dark {
-        padding: 5rem 5vw;
+    .about-four-img + .about-four-img {
+        margin-left: 0;
     }
 }
