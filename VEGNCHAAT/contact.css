@@ -1,0 +1,470 @@
+/* =============================================
+   CONTACT PAGE STYLES - Veg N Chaat
+   ============================================= */
+
+/* --- Page Wrapper --- */
+.contact-page {
+    background-color: var(--bg-color);
+    padding-top: var(--header-height);
+}
+
+/* Make main scroll over the fixed footer (same card-out effect as index) */
+.contact-page main {
+    position: relative;
+    z-index: 2;
+    background-color: var(--bg-color);
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+}
+
+/* =============================================
+   SECTION 1: LET'S CHAT (Form Section)
+   ============================================= */
+
+.contact-form-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - var(--header-height));
+    padding: 80px 8vw 80px;
+    gap: 80px;
+    align-items: start;
+}
+
+/* --- Left Column --- */
+.contact-left {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.contact-hero-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(64px, 8vw, 110px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--text-color);
+}
+
+.contact-hero-image {
+    width: 100%;
+    max-width: 460px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 4px;
+    filter: grayscale(20%);
+    mix-blend-mode: multiply;
+}
+
+/* --- Right Column --- */
+.contact-right {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-top: 16px;
+    position: relative;
+}
+
+.contact-top-image-wrap {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    width: 160px;
+    height: 160px;
+    pointer-events: none;
+}
+
+.contact-top-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+}
+
+.contact-form-header {
+    padding-right: 180px; /* avoid overlap with top image */
+}
+
+.contact-form-title {
+    font-family: var(--font-heading);
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-color);
+    margin-bottom: 12px;
+}
+
+.contact-form-desc {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #555;
+    max-width: 420px;
+}
+
+/* --- Form --- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-select-wrap {
+    position: relative;
+}
+
+.form-select {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: 1px solid #c8c8c8;
+    border-radius: 4px;
+    padding: 14px 44px 14px 16px;
+    font-family: var(--font-primary);
+    font-size: 14px;
+    font-weight: 300;
+    color: #888;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.form-select:focus {
+    border-color: var(--text-color);
+    color: var(--text-color);
+}
+
+.form-select option {
+    color: var(--text-color);
+}
+
+.form-select-chevron {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #888;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.form-input {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #c8c8c8;
+    border-radius: 4px;
+    padding: 14px 16px;
+    font-family: var(--font-primary);
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-color);
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.form-input::placeholder {
+    color: #888;
+}
+
+.form-input:focus {
+    border-color: var(--text-color);
+}
+
+/* Checkboxes + Attach Row */
+.form-needs-label {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-color);
+    margin-bottom: 4px;
+}
+
+.form-needs-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+}
+
+.form-checkboxes {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.form-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-color);
+    cursor: pointer;
+    user-select: none;
+}
+
+.form-checkbox-label input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #999;
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.form-checkbox-label input[type="checkbox"]:checked {
+    background-color: var(--text-color);
+    border-color: var(--text-color);
+}
+
+.form-checkbox-label input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 1px;
+    width: 6px;
+    height: 9px;
+    border: 2px solid white;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+}
+
+.form-attach-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: transparent;
+    border: 1px solid #c8c8c8;
+    border-radius: 4px;
+    font-family: var(--font-primary);
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    white-space: nowrap;
+    margin-left: auto;
+}
+
+.form-attach-btn:hover {
+    border-color: var(--text-color);
+    background-color: #f5f5f0;
+}
+
+.form-textarea {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #c8c8c8;
+    border-radius: 4px;
+    padding: 14px 16px;
+    font-family: var(--font-primary);
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-color);
+    outline: none;
+    resize: vertical;
+    min-height: 120px;
+    transition: border-color 0.2s ease;
+    line-height: 1.6;
+}
+
+.form-textarea::placeholder {
+    color: #888;
+}
+
+.form-textarea:focus {
+    border-color: var(--text-color);
+}
+
+.form-submit-btn {
+    align-self: flex-start;
+    background-color: var(--text-color);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 14px 32px;
+    font-family: var(--font-primary);
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    letter-spacing: 0.04em;
+}
+
+.form-submit-btn:hover {
+    background-color: #333;
+    transform: translateY(-1px);
+}
+
+.form-submit-btn:active {
+    transform: translateY(0);
+}
+
+/* =============================================
+   SECTION 2: MEET US (Location Section)
+   ============================================= */
+
+.meet-us-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 80px 8vw 100px;
+    gap: 80px;
+    align-items: start;
+    border-top: 1px solid var(--border-color);
+}
+
+/* --- Left Column --- */
+.meet-us-left {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.meet-us-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--text-color);
+}
+
+.meet-us-desc {
+    font-size: 15px;
+    font-weight: 300;
+    color: #555;
+    line-height: 1.6;
+    max-width: 380px;
+    margin-top: -24px;
+}
+
+.meet-us-details {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.meet-us-detail-group {}
+
+.meet-us-detail-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 6px;
+    letter-spacing: 0.03em;
+}
+
+.meet-us-detail-text {
+    font-size: 14px;
+    font-weight: 300;
+    color: #555;
+    line-height: 1.7;
+}
+
+.meet-us-phone-link {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-color);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.meet-us-phone-link:hover {
+    color: #555;
+}
+
+.meet-us-hours {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* --- Right Column: Map --- */
+.meet-us-right {
+    position: relative;
+}
+
+.meet-us-map-wrap {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.meet-us-map-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+@media screen and (max-width: 900px) {
+    .contact-form-section {
+        grid-template-columns: 1fr;
+        padding: 60px 6vw;
+        gap: 48px;
+        min-height: unset;
+    }
+
+    .contact-hero-heading {
+        font-size: clamp(52px, 12vw, 80px);
+    }
+
+    .contact-top-image-wrap {
+        width: 100px;
+        height: 100px;
+        top: -20px;
+    }
+
+    .contact-form-header {
+        padding-right: 120px;
+    }
+
+    .meet-us-section {
+        grid-template-columns: 1fr;
+        padding: 60px 6vw 80px;
+        gap: 48px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .contact-form-section {
+        padding: 40px 5vw;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .form-needs-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .form-attach-btn {
+        margin-left: 0;
+    }
+
+    .meet-us-section {
+        padding: 40px 5vw 60px;
+    }
+}
