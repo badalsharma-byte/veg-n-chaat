@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Vegn Chaat</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="contact.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:ital,wght@0,300;0,400;1,300;1,400&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="contact-page">
+
+    <div id="header-placeholder"></div>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main>
+
+        <!-- ===== SECTION 1: LET'S CHAT (Contact Form) ===== -->
+        <section class="contact-form-section">
+
+            <!-- Left Column -->
+            <div class="contact-left">
+                <h1 class="contact-hero-heading">Let's Chat</h1>
+                <img
+                    src="../Assets/pani puri.jpg"
+                    alt="Pani Puri - Vegn Chaat"
+                    class="contact-hero-image"
+                >
+            </div>
+
+            <!-- Right Column -->
+            <div class="contact-right">
+
+                <!-- Floating top-right image -->
+                <div class="contact-top-image-wrap">
+                    <img
+                        src="../Assets/ice cream Background Removed.png"
+                        alt="Dessert"
+                        class="contact-top-image"
+                    >
+                </div>
+
+                <!-- Form Header -->
+                <div class="contact-form-header">
+                    <h2 class="contact-form-title">We're here to help</h2>
+                    <p class="contact-form-desc">Have a question about reservations, catering, or our menu? That's our favourite topic. Get support directly from our team below.</p>
+                </div>
+
+                <!-- Contact Form -->
+                <form class="contact-form" action="#" method="POST">
+
+                    <!-- Enquiry Type Dropdown -->
+                    <div class="form-select-wrap">
+                        <select class="form-select" name="enquiry_type" required>
+                            <option value="" disabled selected>Enquiry Type</option>
+                            <option value="table">Table Reservation</option>
+                            <option value="catering">Catering Services</option>
+                            <option value="menu">Menu &amp; Dietary Info</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <svg class="form-select-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+
+                    <!-- Name Row -->
+                    <div class="form-row">
+                        <input class="form-input" type="text" name="first_name" placeholder="First Name*" required>
+                        <input class="form-input" type="text" name="last_name" placeholder="Last Name*" required>
+                    </div>
+
+                    <!-- Contact Row -->
+                    <div class="form-row">
+                        <input class="form-input" type="email" name="email" placeholder="Email*" required>
+                        <input class="form-input" type="tel" name="phone" placeholder="Contact Number">
+                    </div>
+
+                    <!-- Needs / Checkboxes -->
+                    <div>
+                        <p class="form-needs-label">Tell us a bit about your needs</p>
+                        <div class="form-needs-row">
+                            <div class="form-checkboxes">
+                                <label class="form-checkbox-label">
+                                    <input type="checkbox" name="needs" value="reservation">
+                                    Reservation
+                                </label>
+                                <label class="form-checkbox-label">
+                                    <input type="checkbox" name="needs" value="catering">
+                                    Catering
+                                </label>
+                                <label class="form-checkbox-label">
+                                    <input type="checkbox" name="needs" value="other">
+                                    Other
+                                </label>
+                            </div>
+                            <label class="form-attach-btn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+                                </svg>
+                                Attach a file
+                                <input type="file" name="attachment" style="display:none;" accept=".pdf,.jpg,.png,.docx">
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Message -->
+                    <textarea class="form-textarea" name="message" placeholder="Message goes here" rows="5"></textarea>
+
+                    <!-- Submit -->
+                    <button type="submit" class="form-submit-btn">Submit enquiry</button>
+
+                </form>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 2: MEET US (Location) ===== -->
+        <section class="meet-us-section">
+
+            <!-- Left Column -->
+            <div class="meet-us-left">
+                <h2 class="meet-us-heading">Meet Us</h2>
+                <p class="meet-us-desc">Would you like to talk to us or come and dine with us?</p>
+
+                <div class="meet-us-details">
+                    <div class="meet-us-detail-group">
+                        <p class="meet-us-detail-label">Our Address</p>
+                        <p class="meet-us-detail-text">
+                            Shop 4, 120 Spice Lane,<br>
+                            Little India District, Melbourne VIC 3000
+                        </p>
+                    </div>
+
+                    <div class="meet-us-detail-group">
+                        <p class="meet-us-detail-label">Phone</p>
+                        <a href="tel:+61390000000" class="meet-us-phone-link">+61 3 9000 0000</a>
+                    </div>
+
+                    <div class="meet-us-detail-group">
+                        <p class="meet-us-detail-label">Operating Times</p>
+                        <div class="meet-us-hours">
+                            <p class="meet-us-detail-text">Monday – Thursday: 11:00 am – 9:30 pm</p>
+                            <p class="meet-us-detail-text">Friday – Saturday: 11:00 am – 10:30 pm</p>
+                            <p class="meet-us-detail-text">Sunday: 12:00 pm – 9:00 pm</p>
+                            <p class="meet-us-detail-text">Public Holidays: Closed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Google Map -->
+            <div class="meet-us-right">
+                <div class="meet-us-map-wrap">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.101953903784!2d144.96327731531938!3d-37.81424507975259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sMelbourne%20VIC%203000%2C%20Australia!5e0!3m2!1sen!2sau!4v1620000000000!5m2!1sen!2sau"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Vegn Chaat Location Map"
+                        aria-label="Google Maps showing Vegn Chaat restaurant location">
+                    </iframe>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    
+    <div id="footer-placeholder"></div>
+
+    <!-- Libraries -->
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+    <script src="components.js"></script>
+
+</body>
+
+</html>
