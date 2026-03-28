@@ -7,78 +7,387 @@
     <title>Menu - Veg n Chaat</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="menu.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:ital,wght@0,300;0,400;1,300;1,400&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
+    <!-- ======================== HEADER (from index.html) ======================== -->
     <header class="site-header">
         <div class="header-container">
+            <!-- Logo area -->
             <a href="index.html" class="logo-link">
-                <img src="../Assets/logo.png" alt="Veg n Chaat Logo" class="site-logo">
+                <img src="../Assets/logo.png" alt="Vegn Chaat Logo" class="site-logo">
                 <div class="logo-text">
                     <span class="logo-text-bold">Vegn</span>
                     <span class="logo-text-light">Chaat</span>
                 </div>
             </a>
 
+            <!-- Central Navigation -->
             <nav class="main-nav">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="menu.html" class="nav-link active">Menu</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Locations</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                    <li class="nav-item has-dropdown" data-dropdown="shop">
+                        <a href="menu.html" class="nav-link">
+                            <span class="roll-text">
+                                <span class="text-upper">Menu</span>
+                                <span class="text-lower">Menu</span>
+                            </span>
+                        </a>
+
+                        <!-- Shop Megamenu -->
+                        <div class="megamenu" id="shop-menu">
+                            <div class="megamenu-container shop-grid">
+                                <div class="shop-categories">
+                                    <a href="#appetizers" class="category-link yucca-hover">
+                                        <div class="roll-text">
+                                            <span class="text-upper">Appetizers</span>
+                                            <span class="text-lower">Appetizers</span>
+                                        </div>
+                                        <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </a>
+                                    <a href="#chaat" class="category-link yucca-hover">
+                                        <div class="roll-text">
+                                            <span class="text-upper">Chaat Specialties</span>
+                                            <span class="text-lower">Chaat Specialties</span>
+                                        </div>
+                                        <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </a>
+                                    <a href="#monthly-specials" class="category-link yucca-hover">
+                                        <div class="roll-text">
+                                            <span class="text-upper">Monthly Specials</span>
+                                            <span class="text-lower">Monthly Specials</span>
+                                        </div>
+                                        <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </a>
+                                    <a href="#vegetable-entrees" class="category-link yucca-hover">
+                                        <div class="roll-text">
+                                            <span class="text-upper">Entrees</span>
+                                            <span class="text-lower">Entrees</span>
+                                        </div>
+                                        <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </a>
+                                    <a href="#beverages" class="category-link yucca-hover">
+                                        <div class="roll-text">
+                                            <span class="text-upper">Beverages</span>
+                                            <span class="text-lower">Beverages</span>
+                                        </div>
+                                        <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </a>
+                                    <a href="#desserts" class="category-link yucca-hover">
+                                        <div class="roll-text">
+                                            <span class="text-upper">Desserts</span>
+                                            <span class="text-lower">Desserts</span>
+                                        </div>
+                                        <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </a>
+                                    <div class="hover-trigger-card">
+                                        <div class="shop-all-divider"></div>
+                                        <a href="#" class="category-link shop-all card-link-anim"
+                                            style="display:flex; padding-top: 20px;">
+                                            <span class="hover-text">View All Dishes</span>
+                                            <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                <polyline points="12 5 19 12 12 19"></polyline>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="shop-custom-card hover-trigger-card">
+                                    <h3>Special Offers</h3>
+                                    <p>Check out our latest deals and discounts</p>
+                                    <div class="card-bottom" style="margin-top: auto;">
+                                        <div class="card-divider light"></div>
+                                        <a href="#" class="card-link light card-link-anim">
+                                            <span class="hover-text">Explore</span>
+                                            <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                <polyline points="12 5 19 12 12 19"></polyline>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="shop-promos-col">
+                                    <div class="promo-card loyalty-card hover-trigger-card">
+                                        <h3>Join our loyalty programme to earn 5% back</h3>
+                                        <div class="card-divider dark"></div>
+                                        <a href="#" class="card-link light card-link-anim">
+                                            <span class="hover-text">Discover Now</span>
+                                            <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                <polyline points="12 5 19 12 12 19"></polyline>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div class="promo-card return-card hover-trigger-card">
+                                        <h3>Promotions return soon</h3>
+                                        <p>We believe in fair, transparent pricing. From time to time, we'll introduce
+                                            limited offers on select ranges.</p>
+                                        <div class="card-divider light"></div>
+                                        <a href="#" class="card-link light card-link-anim">
+                                            <span class="hover-text">Shop our products</span>
+                                            <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                <polyline points="12 5 19 12 12 19"></polyline>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item has-dropdown" data-dropdown="packaging">
+                        <a href="#" class="nav-link">
+                            <span class="roll-text">
+                                <span class="text-upper">Catering</span>
+                                <span class="text-lower">Catering</span>
+                            </span>
+                        </a>
+                        <div class="megamenu" id="packaging-menu">
+                            <div class="megamenu-container packaging-grid">
+                                <div class="pack-card has-bg food-service-bg hover-trigger-card">
+                                    <h3>Catering Packages</h3>
+                                    <div class="card-bottom">
+                                        <div class="card-divider light"></div>
+                                        <a href="#" class="card-link light card-link-anim">
+                                            <span class="hover-text">Explore</span>
+                                            <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                <polyline points="12 5 19 12 12 19"></polyline>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="pack-card has-bg food-processing-bg hover-trigger-card">
+                                    <h3>Build Your Own Catering Menu</h3>
+                                    <div class="card-bottom">
+                                        <div class="card-divider light"></div>
+                                        <a href="#" class="card-link light card-link-anim">
+                                            <span class="hover-text">Explore</span>
+                                            <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                <polyline points="12 5 19 12 12 19"></polyline>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="pack-card has-bg agriculture-bg hover-trigger-card">
+                                    <h3>Dietary & Custom Options</h3>
+                                    <div class="card-bottom">
+                                        <div class="card-divider light"></div>
+                                        <a href="#" class="card-link light card-link-anim">
+                                            <span class="hover-text">Explore</span>
+                                            <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                <polyline points="12 5 19 12 12 19"></polyline>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="pack-card custom-bg hover-trigger-card">
+                                    <h3>Looking for something specific?</h3>
+                                    <p>We can customise your menu to fit your needs</p>
+                                    <div class="card-bottom">
+                                        <div class="card-divider"></div>
+                                        <a href="#" class="card-link card-link-anim">
+                                            <span class="hover-text">Explore</span>
+                                            <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                <polyline points="12 5 19 12 12 19"></polyline>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="roll-text">
+                                <span class="text-upper">Our Story</span>
+                                <span class="text-lower">Our Story</span>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="roll-text">
+                                <span class="text-upper">Gallery</span>
+                                <span class="text-lower">Gallery</span>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="roll-text">
+                                <span class="text-upper">Contact Us</span>
+                                <span class="text-lower">Contact Us</span>
+                            </span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
+
+            <!-- Right Utilities -->
+            <div class="header-utils">
+                <a href="#" class="cta-btn cta-secondary btn-slide-hover">
+                    <div class="roll-text">
+                        <span class="text-upper">Reserve Table</span>
+                        <span class="text-lower">Reserve Table</span>
+                    </div>
+                </a>
+                <a href="#" class="cta-btn cta-primary btn-slide-hover">
+                    <div class="roll-text">
+                        <span class="text-upper">Order Online</span>
+                        <span class="text-lower">Order Online</span>
+                    </div>
+                </a>
+                <button class="icon-btn cart-btn btn-slide-hover" aria-label="Cart">
+                    <div class="roll-icon">
+                        <span class="icon-upper">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </span>
+                        <span class="icon-lower">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </span>
+                    </div>
+                </button>
+            </div>
         </div>
     </header>
 
-    <div class="category-nav-wrapper">
-        <nav class="category-nav">
-            <a href="#featured" class="category-link">Featured</a>
-            <a href="#appetizers" class="category-link">Appetizers</a>
-            <a href="#chaat" class="category-link">Chaat</a>
-            <a href="#monthly-specials" class="category-link">Monthly Specials</a>
-            <a href="#vegetable-entrees" class="category-link">Entrees</a>
-            <a href="#beverages" class="category-link">Beverages</a>
-            <a href="#desserts" class="category-link">Desserts</a>
-        </nav>
-    </div>
 
+    <div class="dummy-main">
     <main class="menu-container">
-        
-        <section class="menu-hero">
-            <div class="hero-video-container">
-                <video autoplay muted loop playsinline class="hero-video">
-                    <source src="../Assets/video/Restaurant_Interior.mp4" type="video/mp4">
-                </video>
-                <div class="hero-overlay"></div>
-            </div>
-            <div class="hero-content">
-                <h1 class="hero-title">Experience the Taste of<br>Authentic Indian Street Food</h1>
-            </div>
-        </section>
 
-        <header class="menu-header">
-            <p>Simple. Fresh. Honest Indian Street Food.</p>
-        </header>
+        <!-- LPQ Style Stacked Hero Banners -->
+        <div class="hero-banners-wrapper">
 
-        <section id="featured" class="featured-section">
-            <div class="featured-container">
-                <div class="featured-image">
-                    <img src="../Assets/dahi bhala.jpg" alt="Dahi Bhalla Featured">
+            <!-- Banner 1: Full Width -->
+            <section class="sticky-banner" id="banner-1">
+                <div class="banner-bg">
+                    <img src="../Assets/dahi bhala.jpg" alt="Dahi Bhalla Special">
                 </div>
-                <div class="featured-content">
-                    <h3>Dahi Bhalla Special</h3>
-                    <p>Our classic soft fried lentil dumplings topped with chilled yogurt, potatoes, crispy wafers and our secret house chutneys. A must-try classic.</p>
-                    <span class="item-price">$8.99</span>
-                    <div class="item-tags" style="margin-top: 15px;">
-                        <span class="tag tag-jain">Jain Option</span>
-                        <span class="tag tag-nutfree">Nut Free</span>
+                <div class="banner-overlay"></div>
+                <div class="banner-content">
+                    <p class="banner-category">Featured Special</p>
+                    <h2 class="banner-title">Dahi Bhalla</h2>
+                    <div class="banner-info-btn">
+                        <i>i</i>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            <!-- Banner 2: Full Width -->
+            <section class="sticky-banner" id="banner-2">
+                <div class="banner-bg">
+                    <img src="../Assets/pani puri.jpg" alt="Pani Puri">
+                </div>
+                <div class="banner-overlay"></div>
+                <div class="banner-content">
+                    <p class="banner-category">Chef's Pick</p>
+                    <h2 class="banner-title">Pani Puri</h2>
+                    <div class="banner-info-btn">
+                        <i>i</i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Banner 3: Split Screen (2 Columns) -->
+            <section class="sticky-banner split-banner" id="banner-3">
+
+                <div class="split-side split-left">
+                    <div class="banner-bg">
+                        <img src="../Assets/dishes.jpg" alt="Our Dishes">
+                    </div>
+                    <div class="banner-overlay"></div>
+                    <div class="banner-content">
+                        <p class="banner-category">Classic Entree</p>
+                        <h2 class="banner-title">House Specials</h2>
+                        <div class="banner-info-btn">
+                            <i>i</i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="split-side split-right">
+                    <div class="banner-bg">
+                        <img src="../Assets/paho bhaji.jpg" alt="Pav Bhaji">
+                    </div>
+                    <div class="banner-overlay"></div>
+                    <div class="banner-content">
+                        <p class="banner-category">Street Snack</p>
+                        <h2 class="banner-title">Pav Bhaji</h2>
+                        <div class="banner-info-btn">
+                            <i>i</i>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
 
         <!-- Appetizers -->
         <section id="appetizers" class="menu-section">
@@ -86,50 +395,81 @@
                 <h2>Appetizers & Street Snacks</h2>
             </div>
             <div class="menu-grid">
+                <!-- Item 1 -->
                 <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-title">Potato Peas Samosa</span>
-                        <span class="item-price">$4.99</span>
+                    <div class="item-img-container">
+                        <img src="../Assets/dishes1.jpg" alt="Potato Peas Samosa">
+                        <div class="card-info-btn"><i>i</i></div>
                     </div>
-                    <p class="item-description">Crispy fried dumplings filled with spiced potatoes and green peas, served with chutney.</p>
-                    <div class="item-tags">
-                        <span class="tag tag-vegan">Vegan</span>
-                        <span class="tag tag-jain">Jain</span>
-                        <span class="tag tag-nutfree">Nut Free</span>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-title">Potato Peas Samosa</span>
+                            <span class="item-price">$4.99</span>
+                        </div>
+                        <p class="item-description">Crispy fried dumplings filled with spiced potatoes and green peas, served with chutney.</p>
+                        <div class="item-tags">
+                            <span class="tag tag-vegan">Vegan</span>
+                            <span class="tag tag-jain">Jain</span>
+                            <span class="tag tag-nutfree">Nut Free</span>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Item 2 -->
                 <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-title">Bombay Vada Pav</span>
-                        <span class="item-price">$4.99</span>
+                    <div class="item-img-container">
+                        <img src="../Assets/paho bhaji.jpg" alt="Bombay Vada Pav">
+                        <div class="card-info-btn"><i>i</i></div>
                     </div>
-                    <p class="item-description">Mumbai-style street sandwich with a spiced potato fritter in soft pav bread and chutneys.</p>
-                    <div class="item-tags">
-                        <span class="tag tag-vegan">Vegan</span>
-                        <span class="tag tag-jain">Jain</span>
-                        <span class="tag tag-nutfree">Nut Free</span>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-title">Bombay Vada Pav</span>
+                            <span class="item-price">$4.99</span>
+                        </div>
+                        <p class="item-description">Mumbai-style street sandwich with a spiced potato fritter in soft pav bread and chutneys.</p>
+                        <div class="item-tags">
+                            <span class="tag tag-vegan">Vegan</span>
+                            <span class="tag tag-jain">Jain</span>
+                            <span class="tag tag-nutfree">Nut Free</span>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Item 3 -->
                 <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-title">Veg Cheese Burger</span>
-                        <span class="item-price">$8.99</span>
+                    <div class="item-img-container">
+                        <img src="../Assets/dahi bhala.jpg" alt="Dahi Bhalla">
+                        <div class="card-info-btn"><i>i</i></div>
                     </div>
-                    <p class="item-description">Vegetarian burger with melted cheese served with crispy fries and choice of soda.</p>
-                    <div class="item-tags">
-                        <span class="tag tag-jain">Jain</span>
-                        <span class="tag tag-nutfree">Nut Free</span>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-title">Dahi Bhalla</span>
+                            <span class="item-price">$7.99</span>
+                        </div>
+                        <p class="item-description">Soft lentil dumplings soaked in whipped yogurt topped with chutneys and spices.</p>
+                        <div class="item-tags">
+                            <span class="tag tag-jain">Jain</span>
+                            <span class="tag tag-nutfree">Nut Free</span>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Item 4 -->
                 <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-title">Dabeli</span>
-                        <span class="item-price">$7.99</span>
+                    <div class="item-img-container">
+                        <img src="../Assets/dishes.jpg" alt="Dabeli">
+                        <div class="card-info-btn"><i>i</i></div>
                     </div>
-                    <p class="item-description">Spiced potato mixture stuffed in pav topped with onion, pomegranate, cilantro, peanuts and sev.</p>
-                    <div class="item-tags">
-                        <span class="tag tag-vegan">Vegan</span>
-                        <span class="tag tag-jain">Jain</span>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-title">Dabeli</span>
+                            <span class="item-price">$7.99</span>
+                        </div>
+                        <p class="item-description">Spiced potato mixture stuffed in pav topped with onion, pomegranate, cilantro, peanuts and sev.</p>
+                        <div class="item-tags">
+                            <span class="tag tag-vegan">Vegan</span>
+                            <span class="tag tag-jain">Jain</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -141,52 +481,83 @@
                 <h2>Chaat Specialties</h2>
             </div>
             <div class="menu-grid">
+                <!-- Item 1 -->
                 <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-title">Dahi Papdi Chaat</span>
-                        <span class="item-price">$7.99</span>
+                    <div class="item-img-container">
+                        <img src="../Assets/dahi bhala.jpg" alt="Dahi Papdi Chaat">
+                        <div class="card-info-btn"><i>i</i></div>
                     </div>
-                    <p class="item-description">Crispy wafers layered with potatoes, chickpeas, yogurt, chutneys, sev and spices.</p>
-                    <div class="item-tags">
-                        <span class="tag tag-vegan">Vegan Opt</span>
-                        <span class="tag tag-jain">Jain</span>
-                        <span class="tag tag-nutfree">Nut Free</span>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-title">Dahi Papdi Chaat</span>
+                            <span class="item-price">$7.99</span>
+                        </div>
+                        <p class="item-description">Crispy wafers layered with potatoes, chickpeas, yogurt, chutneys, sev and spices.</p>
+                        <div class="item-tags">
+                            <span class="tag tag-vegan">Vegan Opt</span>
+                            <span class="tag tag-jain">Jain</span>
+                            <span class="tag tag-nutfree">Nut Free</span>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Item 2 -->
                 <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-title">Pani Poori</span>
-                        <span class="item-price">$7.99</span>
+                    <div class="item-img-container">
+                        <img src="../Assets/pani puri.jpg" alt="Pani Poori">
+                        <div class="card-info-btn"><i>i</i></div>
                     </div>
-                    <p class="item-description">Crispy hollow wafers served with spicy mint water, potatoes, sprouts and chutneys.</p>
-                    <div class="item-tags">
-                        <span class="tag tag-vegan">Vegan</span>
-                        <span class="tag tag-jain">Jain</span>
-                        <span class="tag tag-nutfree">Nut Free</span>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-title">Pani Poori</span>
+                            <span class="item-price">$7.99</span>
+                        </div>
+                        <p class="item-description">Crispy hollow wafers served with spicy mint water, potatoes, sprouts and chutneys.</p>
+                        <div class="item-tags">
+                            <span class="tag tag-vegan">Vegan</span>
+                            <span class="tag tag-jain">Jain</span>
+                            <span class="tag tag-nutfree">Nut Free</span>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Item 3 -->
                 <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-title">Bhel Poori</span>
-                        <span class="item-price">$7.99</span>
+                    <div class="item-img-container">
+                        <img src="../Assets/dishes1.jpg" alt="Bhel Poori">
+                        <div class="card-info-btn"><i>i</i></div>
                     </div>
-                    <p class="item-description">Puffed rice mixed with crispy wafers, potatoes, onions, sprouts, chickpeas, sev and chutneys.</p>
-                    <div class="item-tags">
-                        <span class="tag tag-vegan">Vegan</span>
-                        <span class="tag tag-jain">Jain</span>
-                        <span class="tag tag-nutfree">Nut Free</span>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-title">Bhel Poori</span>
+                            <span class="item-price">$7.99</span>
+                        </div>
+                        <p class="item-description">Puffed rice mixed with crispy wafers, potatoes, onions, sprouts, chickpeas, sev and chutneys.</p>
+                        <div class="item-tags">
+                            <span class="tag tag-vegan">Vegan</span>
+                            <span class="tag tag-jain">Jain</span>
+                            <span class="tag tag-nutfree">Nut Free</span>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Item 4 -->
                 <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-title">Chaat Basket</span>
-                        <span class="item-price">$9.99</span>
+                    <div class="item-img-container">
+                        <img src="../Assets/dishes.jpg" alt="Chaat Basket">
+                        <div class="card-info-btn"><i>i</i></div>
                     </div>
-                    <p class="item-description">Basket shaped crispy wafer filled with potatoes, yogurt, chickpeas, onions and chutneys.</p>
-                    <div class="item-tags">
-                        <span class="tag tag-vegan">Vegan Opt</span>
-                        <span class="tag tag-jain">Jain</span>
-                        <span class="tag tag-nutfree">Nut Free</span>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-title">Chaat Basket</span>
+                            <span class="item-price">$9.99</span>
+                        </div>
+                        <p class="item-description">Basket shaped crispy wafer filled with potatoes, yogurt, chickpeas, onions and chutneys.</p>
+                        <div class="item-tags">
+                            <span class="tag tag-vegan">Vegan Opt</span>
+                            <span class="tag tag-jain">Jain</span>
+                            <span class="tag tag-nutfree">Nut Free</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -198,19 +569,34 @@
                 <h2>Monthly Specials</h2>
             </div>
             <div class="menu-grid">
+                <!-- Item 1 -->
                 <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-title">Special Thali</span>
-                        <span class="item-price">$17.99</span>
+                    <div class="item-img-container">
+                        <img src="../Assets/dishes.jpg" alt="Special Thali">
+                        <div class="card-info-btn"><i>i</i></div>
                     </div>
-                    <p class="item-description">Appetizer, two vegetables, dal, peas pulao, raita, papad, dessert and choice of roti/paratha or poori.</p>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-title">Special Thali</span>
+                            <span class="item-price">$17.99</span>
+                        </div>
+                        <p class="item-description">Appetizer, two vegetables, dal, peas pulao, raita, papad, dessert and choice of roti/paratha or poori.</p>
+                    </div>
                 </div>
+
+                <!-- Item 2 -->
                 <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-title">Paneer Beetroot Kofta Curry</span>
-                        <span class="item-price">$17.99</span>
+                    <div class="item-img-container">
+                        <img src="../Assets/dishes1.jpg" alt="Paneer Beetroot Kofta Curry">
+                        <div class="card-info-btn"><i>i</i></div>
                     </div>
-                    <p class="item-description">Paneer and beetroot dumplings served in rich curry with garlic naan.</p>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-title">Paneer Beetroot Kofta Curry</span>
+                            <span class="item-price">$17.99</span>
+                        </div>
+                        <p class="item-description">Paneer and beetroot dumplings served in rich curry with garlic naan.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -221,33 +607,64 @@
                 <h2>Vegetable Entrees</h2>
             </div>
             <div class="menu-grid">
+                <!-- Item 1 -->
                 <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-title">Paneer Tikka Masala</span>
-                        <span class="item-price">$14.99</span>
+                    <div class="item-img-container">
+                        <img src="../Assets/dishes.jpg" alt="Paneer Tikka Masala">
+                        <div class="card-info-btn"><i>i</i></div>
                     </div>
-                    <p class="item-description">Grilled paneer cooked in creamy tomato masala sauce.</p>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-title">Paneer Tikka Masala</span>
+                            <span class="item-price">$14.99</span>
+                        </div>
+                        <p class="item-description">Grilled paneer cooked in creamy tomato masala sauce.</p>
+                    </div>
                 </div>
+
+                <!-- Item 2 -->
                 <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-title">Dal Makhni</span>
-                        <span class="item-price">$14.99</span>
+                    <div class="item-img-container">
+                        <img src="../Assets/dahi bhala.jpg" alt="Dal Makhni">
+                        <div class="card-info-btn"><i>i</i></div>
                     </div>
-                    <p class="item-description">Slow cooked black lentils with butter, tomatoes and spices.</p>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-title">Dal Makhni</span>
+                            <span class="item-price">$14.99</span>
+                        </div>
+                        <p class="item-description">Slow cooked black lentils with butter, tomatoes and spices.</p>
+                    </div>
                 </div>
+
+                <!-- Item 3 -->
                 <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-title">Malai Kofta</span>
-                        <span class="item-price">$14.99</span>
+                    <div class="item-img-container">
+                        <img src="../Assets/paho bhaji.jpg" alt="Malai Kofta">
+                        <div class="card-info-btn"><i>i</i></div>
                     </div>
-                    <p class="item-description">Vegetable dumplings cooked in rich creamy gravy.</p>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-title">Malai Kofta</span>
+                            <span class="item-price">$14.99</span>
+                        </div>
+                        <p class="item-description">Vegetable dumplings cooked in rich creamy gravy.</p>
+                    </div>
                 </div>
+
+                <!-- Item 4 -->
                 <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-title">Chana Masala</span>
-                        <span class="item-price">$12.99</span>
+                    <div class="item-img-container">
+                        <img src="../Assets/dishes1.jpg" alt="Chana Masala">
+                        <div class="card-info-btn"><i>i</i></div>
                     </div>
-                    <p class="item-description">White chickpeas cooked with tomatoes, onions and spices.</p>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-title">Chana Masala</span>
+                            <span class="item-price">$12.99</span>
+                        </div>
+                        <p class="item-description">White chickpeas cooked with tomatoes, onions and spices.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -258,19 +675,34 @@
                 <h2>Beverages</h2>
             </div>
             <div class="menu-grid">
+                <!-- Item 1 -->
                 <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-title">Masala Chai</span>
-                        <span class="item-price">$2.99</span>
+                    <div class="item-img-container">
+                        <img src="../Assets/dishes1.jpg" alt="Masala Chai">
+                        <div class="card-info-btn"><i>i</i></div>
                     </div>
-                    <p class="item-description">Traditional Indian tea brewed with milk, cardamom and spices.</p>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-title">Masala Chai</span>
+                            <span class="item-price">$2.99</span>
+                        </div>
+                        <p class="item-description">Traditional Indian tea brewed with milk, cardamom and spices.</p>
+                    </div>
                 </div>
+
+                <!-- Item 2 -->
                 <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-title">Mango Lassi</span>
-                        <span class="item-price">$4.99</span>
+                    <div class="item-img-container">
+                        <img src="../Assets/dahi bhala.jpg" alt="Mango Lassi">
+                        <div class="card-info-btn"><i>i</i></div>
                     </div>
-                    <p class="item-description">Refreshing yogurt drink blended with mango.</p>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-title">Mango Lassi</span>
+                            <span class="item-price">$4.99</span>
+                        </div>
+                        <p class="item-description">Refreshing yogurt drink blended with mango.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -281,66 +713,149 @@
                 <h2>Desserts</h2>
             </div>
             <div class="menu-grid">
+                <!-- Item 1 -->
                 <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-title">Ras Malai</span>
-                        <span class="item-price">$7.99</span>
+                    <div class="item-img-container">
+                        <img src="../Assets/pani puri.jpg" alt="Ras Malai">
+                        <div class="card-info-btn"><i>i</i></div>
                     </div>
-                    <p class="item-description">Soft cheese dumplings soaked in sweet creamy milk.</p>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-title">Ras Malai</span>
+                            <span class="item-price">$7.99</span>
+                        </div>
+                        <p class="item-description">Soft cheese dumplings soaked in sweet creamy milk.</p>
+                    </div>
                 </div>
+
+                <!-- Item 2 -->
                 <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-title">Gajar Halwa</span>
-                        <span class="item-price">$8.99</span>
+                    <div class="item-img-container">
+                        <img src="../Assets/dishes.jpg" alt="Gajar Halwa">
+                        <div class="card-info-btn"><i>i</i></div>
                     </div>
-                    <p class="item-description">Traditional carrot dessert cooked with milk and nuts.</p>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-title">Gajar Halwa</span>
+                            <span class="item-price">$8.99</span>
+                        </div>
+                        <p class="item-description">Traditional carrot dessert cooked with milk and nuts.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
     </main>
+    </div><!-- /.dummy-main -->
 
-    <div class="floating-nav-container">
-        <button class="menu-fab" id="menuFab">
-            <span class="fab-icon">☰</span>
-            <span class="fab-text">Menu Categories</span>
-        </button>
-        <div class="bottom-nav-menu" id="bottomNavMenu">
-            <a href="#featured" class="bottom-nav-link">Featured</a>
-            <a href="#appetizers" class="bottom-nav-link">Appetizers</a>
-            <a href="#chaat" class="bottom-nav-link">Chaat</a>
-            <a href="#monthly-specials" class="bottom-nav-link">Monthly Specials</a>
-            <a href="#vegetable-entrees" class="bottom-nav-link">Entrees</a>
-            <a href="#beverages" class="bottom-nav-link">Beverages</a>
-            <a href="#desserts" class="bottom-nav-link">Desserts</a>
-        </div>
+    <!-- ======================== BOTTOM CATEGORY NAV BAR ======================== -->
+    <div class="category-nav-wrapper">
+        <nav class="category-nav" id="categoryNav">
+            <a href="#appetizers" class="category-nav-link active">Appetizers</a>
+            <a href="#chaat" class="category-nav-link">Chaat</a>
+            <a href="#monthly-specials" class="category-nav-link">Monthly Specials</a>
+            <a href="#vegetable-entrees" class="category-nav-link">Entrees</a>
+            <a href="#beverages" class="category-nav-link">Beverages</a>
+            <a href="#desserts" class="category-nav-link">Desserts</a>
+        </nav>
     </div>
 
-    <footer class="menu-footer">
-        <div class="footer-top">
-            <div class="footer-logo-section">
-                <img src="../Assets/logo.png" alt="Veg n Chaat Logo" class="footer-logo">
+    <!-- ======================== FOOTER (from index.html) ======================== -->
+    <div class="footer-wrapper">
+        <footer class="footer">
+            <div class="f-header">
+                <h4 class="f-title">Experience Authentic Indian Street Food.</h4>
+                <button class="btn-back" aria-label="Back to top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 4L12 20M12 4L6 10M12 4L18 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+                    </svg>
+                </button>
             </div>
-            <div class="footer-actions">
-                <a href="#" class="footer-btn">Online Order</a>
-                <a href="#" class="footer-btn">Catering Services</a>
-                <a href="#" class="footer-btn">Reserve a Table</a>
-            </div>
-        </div>
-        <div class="footer-bottom-bar">
-            <div class="footer-copy">© Veg N Chaat 2026. All rights reserved.</div>
-            <div class="footer-social">
-                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="FB" width="18"></a>
-                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="IG" width="18"></a>
-            </div>
-            <div class="footer-links">
-                <a href="#">Contact Us</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Conditions</a>
-            </div>
-        </div>
-    </footer>
 
+            <div class="f-content">
+                <a href="#" class="f-content-col">
+                    <img src="../Assets/logo.png" alt="Vegn Chaat Logo" class="f-logo">
+                </a>
+
+                <div class="f-content-col">
+                    <div class="f-solution">
+                        <a href="#" class="f-solution-link" aria-label="Authentic Dishes"></a>
+                        <figure class="media-wrapper image-wrapper responsive loading"><span
+                                class="media-inner image-inner"><img class="media image lazy" alt="Authentic Dishes"
+                                    src="../Assets/dishes.jpg" /></span></figure>
+                        <h5 class="f-solution-title">Online Order</h5>
+                    </div>
+                </div>
+                <div class="f-content-col">
+                    <div class="f-solution">
+                        <a href="#" class="f-solution-link" aria-label="Catering Options"></a>
+                        <figure class="media-wrapper image-wrapper responsive loading"><span
+                                class="media-inner image-inner"><img class="media image lazy" alt="Catering Options"
+                                    src="../Assets/dahi bhala.jpg" /></span>
+                        </figure>
+                        <h5 class="f-solution-title">Catering Services</h5>
+                    </div>
+                </div>
+                <div class="f-content-col">
+                    <div class="f-solution">
+                        <a href="#" class="f-solution-link" aria-label="Restaurant Reservations"></a>
+                        <figure class="media-wrapper image-wrapper responsive loading"><span
+                                class="media-inner image-inner"><img class="media image lazy" alt="Restaurant Reservations"
+                                    src="../Assets/pani puri.jpg" /></span>
+                        </figure>
+                        <h5 class="f-solution-title">Reserve a Table</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="f-footer">
+                <div class="f-copyright">
+                    <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M13.1647 21.5651H18.816C19.0498 21.5651 19.2219 21.4851 19.3323 21.3251C19.4428 21.1651 19.498 20.9682 19.498 20.7344V18.5701H17.9853V20.0524H13.9957V13.0778H17.9853V14.5804H19.498V12.4161C19.498 12.1821 19.4428 11.9818 19.3323 11.8151C19.2219 11.6484 19.0498 11.5651 18.816 11.5651H13.1647C12.9309 11.5651 12.7588 11.6485 12.6483 11.8154C12.5379 11.9823 12.4827 12.1827 12.4827 12.4164V20.7344C12.4827 20.9682 12.5379 21.1651 12.6483 21.3251C12.7588 21.4851 12.9309 21.5651 13.1647 21.5651ZM16.003 29.2318C14.2648 29.2318 12.627 28.8993 11.0897 28.2344C9.55232 27.5696 8.20798 26.6617 7.05665 25.5108C5.90532 24.3599 4.99698 23.0161 4.33165 21.4794C3.66654 19.943 3.33398 18.3057 3.33398 16.5674C3.33398 14.8154 3.66643 13.1687 4.33132 11.6271C4.99621 10.0855 5.9041 8.74466 7.05498 7.60444C8.20587 6.46422 9.54965 5.56144 11.0863 4.8961C12.6228 4.23099 14.2601 3.89844 15.9983 3.89844C17.7503 3.89844 19.3971 4.23088 20.9387 4.89577C22.4802 5.56066 23.8211 6.46299 24.9613 7.60277C26.1015 8.74255 27.0043 10.0829 27.6697 11.6238C28.3348 13.1647 28.6673 14.811 28.6673 16.5628C28.6673 18.301 28.3349 19.9388 27.67 21.4761C27.0051 23.0134 26.1028 24.3578 24.963 25.5091C23.8232 26.6604 22.4829 27.5688 20.942 28.2341C19.4011 28.8992 17.7548 29.2318 16.003 29.2318ZM16.0007 27.7188C19.1049 27.7188 21.7399 26.6325 23.9057 24.4601C26.0714 22.2874 27.1543 19.6558 27.1543 16.5651C27.1543 13.4609 26.0714 10.8259 23.9057 8.6601C21.7399 6.49433 19.1049 5.41144 16.0007 5.41144C12.91 5.41144 10.2783 6.49433 8.10565 8.6601C5.93321 10.8259 4.84698 13.4609 4.84698 16.5651C4.84698 19.6558 5.93321 22.2874 8.10565 24.4601C10.2783 26.6325 12.91 27.7188 16.0007 27.7188Z"
+                            fill="var(--text-color)" />
+                    </svg>
+                    <span class="f-copyright-text">Veg N Chaat 2026. All Rights Reserved</span>
+                </div>
+
+                <div class="f-socials">
+                    <a href="#" class="f-social" target="_blank">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 1.47412C17.8605 1.47412 22.6113 6.22497 22.6113 12.0855C22.6113 17.3819 18.7309 21.7718 13.658 22.5679V15.1528H16.1305L16.601 12.0855H13.658V10.0949C13.658 9.25577 14.0691 8.43781 15.3873 8.43781H16.7254V5.82642C16.7254 5.82642 15.511 5.61917 14.35 5.61917C11.9262 5.61917 10.342 7.08818 10.342 9.74764V12.0855H7.6477V15.1528H10.342V22.5679C5.26908 21.7718 1.38867 17.3819 1.38867 12.0855C1.38867 6.22497 6.13952 1.47412 12 1.47412Z"
+                                fill="var(--text-color)" />
+                        </svg>
+                    </a>
+                    <a href="#" class="f-social" target="_blank">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M6.94511 12C6.94511 9.20824 9.20824 6.9451 12 6.9451C14.7918 6.9451 17.0549 9.20824 17.0549 12C17.0549 14.7918 14.7918 17.0549 12 17.0549C9.20824 17.0549 6.94511 14.7918 6.94511 12ZM12 15.2812C10.1878 15.2812 8.71875 13.8122 8.71875 12C8.71875 10.1878 10.1878 8.71875 12 8.71875C13.8122 8.71875 15.2812 10.1878 15.2812 12C15.2812 13.8122 13.8122 15.2812 12 15.2812Z"
+                                fill="var(--text-color)" />
+                            <path
+                                d="M17.2546 7.92663C17.907 7.92663 18.4359 7.39779 18.4359 6.74539C18.4359 6.093 17.907 5.56412 17.2546 5.56412C16.6023 5.56412 16.0734 6.093 16.0734 6.74539C16.0734 7.39779 16.6023 7.92663 17.2546 7.92663Z"
+                                fill="var(--text-color)" />
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M12 2.15625C9.3266 2.15625 8.99137 2.16758 7.94143 2.21549C6.89368 2.26328 6.1781 2.4297 5.55197 2.67305C4.90466 2.92458 4.35569 3.26117 3.80841 3.80841C3.26117 4.35569 2.92458 4.90466 2.67305 5.55197C2.4297 6.1781 2.26328 6.89368 2.21549 7.94143C2.16758 8.99137 2.15625 9.3266 2.15625 12C2.15625 14.6734 2.16758 15.0086 2.21549 16.0586C2.26328 17.1063 2.4297 17.8219 2.67305 18.448C2.92458 19.0953 3.26117 19.6443 3.80841 20.1916C4.35569 20.7388 4.90466 21.0754 5.55197 21.327C6.1781 21.5703 6.89368 21.7367 7.94143 21.7845C8.99137 21.8324 9.3266 21.8438 12 21.8438C14.6734 21.8438 15.0086 21.8324 16.0586 21.7845C17.1063 21.7367 17.8219 21.5703 18.448 21.327C19.0953 21.0754 19.6443 20.7388 20.1916 20.1916C20.7388 19.6443 21.0754 19.0953 21.327 18.448C21.5703 17.8219 21.7367 17.1063 21.7845 16.0586C21.8324 15.0086 21.8438 14.6734 21.8438 12C21.8438 9.3266 21.8324 8.99137 21.7845 7.94143C21.7367 6.89368 21.5703 6.1781 21.327 5.55197C21.0754 4.90466 20.7388 4.35569 20.1916 3.80841C19.6443 3.26117 19.0953 2.92458 18.448 2.67305C17.8219 2.4297 17.1063 2.26328 16.0586 2.21549C15.0086 2.16758 14.6734 2.15625 12 2.15625Z"
+                                fill="var(--text-color)" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="f-links">
+                    <a href="#" class="f-link">Contact Us</a>
+                    <a href="#" class="f-link">Privacy Policy</a>
+                    <a href="#" class="f-link">Terms & Conditions</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Libraries -->
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script src="script.js"></script>
     <script src="menu.js"></script>
 </body>
 
